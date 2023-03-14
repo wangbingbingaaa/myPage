@@ -1,16 +1,13 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom'
+import RouterEle from './router/index'
 
 function App () {
     return (
-        <div className="App">
-            <header className="App-header">
-                wxb love zhl
-                <img src={logo} className="App-logo" alt="logo" />
-
-
-            </header>
-        </div>
+        <BrowserRouter basename="/myPage">
+            <RouterEle />
+        </BrowserRouter>
     );
 }
 
