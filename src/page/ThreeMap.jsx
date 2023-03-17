@@ -8,18 +8,20 @@ import { wordLine } from '../util/line.js';
 import { ExtrudeMesh } from '../util/ExtrudeMesh.js';
 import { cityPointMesh } from '../util/cityPointMesh'
 import { ConeMesh } from '../util/ConeMesh.js';
+import { tag, createLabelRender } from '../util/tag.js';
+import { prismMesh } from '../util/prismMesh.js';
 
 const ThreeMap = () => {
-    let [mapCon,setMapCon] = useState('')
+    let [mapCon, setMapCon] = useState('')
     useEffect(() => {
-         // 初始化地图
-         if (!mapCon){
+        // 初始化地图
+        if (!mapCon) {
             setMapCon('123')
             init()
 
         }
         return () => setMapCon('')
-       
+
     }, [])
 
     const init = () => {
@@ -32,28 +34,73 @@ const ThreeMap = () => {
         mapGroup.add(lineGroup);
         var meshGroup = new THREE.Group();//轮廓Mesh组
         mapGroup.add(meshGroup);
+
+        var width = document.getElementById('threecon').clientWidth; //窗口宽度
+        var height = document.getElementById('threecon').clientHeight; //窗口高度
         // mapHeight：根据行政区尺寸范围设置，比如高度设置为地图尺寸范围的2%、5%等，过小感觉不到高度，过大太高了
         var mapHeight = 0.8;//拉伸高度
         lineGroup.position.z = mapHeight + mapHeight * 0.1;//适当偏移解决深度冲突
 
         var loader = new THREE.FileLoader();
         loader.setResponseType('json');
-        loader.load(`${process.env.PUBLIC_URL}/json/china.json`, function (data) {
-            //Line绘制国家
-            data.features.forEach(function (area) {
-                if (area.geometry.type === "Polygon") {
-                    // 把"Polygon"和"MultiPolygon"的geometry.coordinates数据结构处理为一致
-                    area.geometry.coordinates = [area.geometry.coordinates];
-                }
-                // 解析所有封闭轮廓边界坐标area.geometry.coordinates
-                lineGroup.add(wordLine(area.geometry.coordinates));//省份边界轮廓插入组对象mapGroup
-                // mapHeight：根据行政区尺寸范围设置，比如高度设置为地图尺寸范围的2%、5%等，过小感觉不到高度，过大太高了
-                meshGroup.add(ExtrudeMesh(area.geometry.coordinates, mapHeight));//省份轮廓拉伸Mesh插入组对象mapGroup
+
+        // 加载GDP数据
+        loader.load(`${process.env.PUBLIC_URL}/json/gdp.json`, function (data) {
+            var gdpObj = {};//每个省份的名字作为属性，属性值是国家对应GDP
+            var gdpMax = 120000//设置一个基准值,以最高的广州gdp为准
+            data.arr.forEach(function (obj) {
+                var gdp = obj.value;//当前省份GDP
+                gdpObj[obj.name] = gdp;//每个省份的名字作为属性，属性值是国家对应GDP
             })
-            // 地图底部边界线
-            var lineGroup2 = lineGroup.clone();
-            mapGroup.add(lineGroup2);
-            lineGroup2.position.z = -mapHeight * 0.1;//适当偏移解决深度冲突
+
+            var prismGroup = new THREE.Group();
+            prismGroup.position.z = mapHeight;//适当偏移，以免深度冲突
+            scene.add(prismGroup);
+
+            loader.load(`${process.env.PUBLIC_URL}/json/china.json`, function (data2) {
+                var color1 = new THREE.Color(0xffff00);
+                var color2 = new THREE.Color(0xff0000);//最大数值对应柱子颜
+                //Line绘制国家
+                data2.features.forEach(function (area) {
+                    if (area.geometry.type === "Polygon") {
+                        // 把"Polygon"和"MultiPolygon"的geometry.coordinates数据结构处理为一致
+                        area.geometry.coordinates = [area.geometry.coordinates];
+                    }
+                    // 解析所有封闭轮廓边界坐标area.geometry.coordinates
+                    lineGroup.add(wordLine(area.geometry.coordinates));//省份边界轮廓插入组对象mapGroup
+                    // mapHeight：根据行政区尺寸范围设置，比如高度设置为地图尺寸范围的2%、5%等，过小感觉不到高度，过大太高了
+                    meshGroup.add(ExtrudeMesh(area.geometry.coordinates, mapHeight));//省份轮廓拉伸Mesh插入组对象mapGroup
+
+                    var name = area.properties.name;//省份名
+                    if (name) {
+
+
+                        var gdp = gdpObj[name];
+                        if (gdp == undefined) console.log(area.properties)
+                        var center = area.properties.center;//行政区几何中心经纬度坐标
+
+                        // 颜色插值计算
+                        var color = color1.clone().lerp(color2.clone(), gdp / gdpMax);
+                        var numHeight = gdp / gdpMax * 10
+                        console.log(numHeight)
+                        var mesh = prismMesh(center[0], center[1], 0.5, numHeight, color.getHex());
+                        prismGroup.add(mesh);
+
+                        // var center = area.properties.cp;//行政区几何中心经纬度坐标
+                        // 柱子上方标注标签
+                        var tag2D = tag(name);
+                        tag2D.position.set(center[0], center[1], 2 + mapHeight)
+                        scene.add(tag2D);
+
+                    }
+
+
+                })
+                // 地图底部边界线
+                var lineGroup2 = lineGroup.clone();
+                mapGroup.add(lineGroup2);
+                lineGroup2.position.z = -mapHeight * 0.1;//适当偏移解决深度冲突
+            });
         });
 
         /**
@@ -76,15 +123,13 @@ const ThreeMap = () => {
         /**
          * 相机设置
          */
-        var width = document.getElementById('threecon').clientWidth; //窗口宽度
-        var height =document.getElementById('threecon').clientHeight; //窗口高度
+
         var k = width / height; //窗口宽高比
         // var s = 200;
-        var s = 15;//根据包围盒大小(行政区域经纬度分布范围大小)设置渲染范围
+        var s = 17;//根据包围盒大小(行政区域经纬度分布范围大小)设置渲染范围
         //创建相机对象
         var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-        // camera.position.set(200, 300, 200); //设置相机位置
-        // camera.position.set(104, 35, 200); //沿着z轴观察
+
         // 通过OrbitControls在控制台打印相机位置选择一个合适的位置
         camera.position.set(104, -105, 200);
         camera.lookAt(104, 35, 0); //指向中国地图的几何中心
@@ -100,35 +145,23 @@ const ThreeMap = () => {
 
         document.getElementById('threecon').appendChild(renderer.domElement);
 
-        // 标注出来省份的行政中心
-        var pos = [113.4668, 33.8818];//省份行政中心位置经纬度
-        var size = 2.0;//大小根据地图尺寸范围设置或者说相机渲染范围
-        // 河南郑州市经纬度
-        var mesh = cityPointMesh(size, pos[0], pos[1]);
-        mesh.position.z = mapHeight + 2.0;//棱锥高度二分之一位置
-        scene.add(mesh);
-
-        var lengzhui = ConeMesh(1.0, pos[0], pos[1]);
-        lengzhui.position.z = mapHeight;
-        scene.add(lengzhui);
-
-
+        var labelRenderer = createLabelRender(width, height)
+        if (labelRenderer) {
+            document.getElementById('threeTag').appendChild(labelRenderer.domElement);
+        }
 
         // 光圈大小在原大小基础上1~2.5倍在之间变化,也就是mesh.size范围2~5之间
         var _s = 2.0;
         // 渲染函数
         function render () {
-            lengzhui.rotateZ(0.01);
-            _s += 0.02;
-            mesh.scale.set(_s, _s, _s);
-            if (_s <= 2.6) {
-                mesh.material.opacity = (_s - 2.0) * 1.67;//1.67约等于1/(2.6-2.0)，保证透明度在0~1之间变化
-            } else if (_s > 2.6 && _s <= 5) {
-                mesh.material.opacity = 1 - (_s - 2) / 3;//缩放5.0对应0 缩放2.0对应1
-            } else {
-                _s = 2.0;
-            }
+
             renderer.render(scene, camera); //执行渲染操作
+          
+            labelRenderer.render(scene, camera);
+
+
+
+
             requestAnimationFrame(render); //请求再次执行渲染函数render，渲染下一帧
             // console.log(camera.position);
         }
@@ -141,24 +174,45 @@ const ThreeMap = () => {
         controls.target.set(104, 35, 0);
         controls.update();//update()函数内会执行camera.lookAt(controls.target)
 
+
+        var chooseMesh = null;//标记鼠标拾取到的mesh
+        function choose (event) {
+            if (chooseMesh) {
+                chooseMesh.material.color.set(0x004444);//恢复原来颜色
+            }
+            var Sx = event.clientX; //鼠标单击位置横坐标
+            var Sy = event.clientY; //鼠标单击位置纵坐标
+            //屏幕坐标转WebGL标准设备坐标
+            var x = (Sx / window.innerWidth) * 2 - 1; //WebGL标准设备横坐标
+            var y = -(Sy / window.innerHeight) * 2 + 1; //WebGL标准设备纵坐标
+            //创建一个射线投射器`Raycaster`
+            var raycaster = new THREE.Raycaster();
+            //通过鼠标单击位置标准设备坐标和相机参数计算射线投射器`Raycaster`的射线属性.ray
+            raycaster.setFromCamera(new THREE.Vector2(x, y), camera);
+            //返回.intersectObjects()参数中射线选中的网格模型对象
+            // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
+            var intersects = raycaster.intersectObjects(meshGroup.children);
+            console.log("射线器返回的对象", intersects);
+            // console.log("射线投射器返回的对象 点point", intersects[0].point);
+            // console.log("射线投射器的对象 几何体",intersects[0].object.geometry.vertices)
+            // intersects.length大于0说明，说明选中了模型
+            if (intersects.length > 0) {
+                intersects[0].object.material.color.set(0x009999);
+                chooseMesh = intersects[0].object;
+            }
+        }
+        addEventListener('click', choose); // 监听窗口鼠标单击事件
+
     }
 
 
 
 
     return (
-        <div className="threeContainer" id='threemapdiv' style={{ height: '100%', width: '100%' }}>
-            <div id='threecon' style={{ height: '500px', width: '100%' }}>
-
+        <div className="threeContainer" id='threemapdiv' style={{ height: '100%', width: '100%', }}>
+            <div id='threecon' style={{ height: '100%', width: '100%' }}>
             </div>
-            <div className="tagDiv" id="tag">
-                <div id="name" style={{ color: '#ffffff' }}>
-                    省份：河南
-                </div>
-                <div id="title" style={{ marginTop: '10px', color: '#ffffff' }}>
-                    数量：10
-                </div>
-            </div>
+            <div id='threeTag'></div>
 
         </div>
     )

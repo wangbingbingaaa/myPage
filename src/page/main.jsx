@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MapPage from './mapPage';
 import Header from './Header'
 import ThreeMap from './ThreeMap'
 import './main.scss'
 const MainPage = () => {
+    let [mapVal,setMapVal] = useState(false)
     const changeMap =()=>{
+        setMapVal(!mapVal)
         console.log('000')
 
     }
@@ -16,8 +18,11 @@ const MainPage = () => {
 
                 </div>
                 <div className='center'>
-                    {/* <MapPage ></MapPage> */}
-                    <ThreeMap/>
+                    {
+                        mapVal == true ?
+                        <ThreeMap/> : <MapPage ></MapPage>
+                    }
+                   
 
                 </div>
                 <div className="footCon">

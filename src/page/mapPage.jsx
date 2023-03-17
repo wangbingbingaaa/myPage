@@ -22,7 +22,7 @@ const MapPage = () => {
     },[]);
     return (
         <div className="container" style={{height:'100%'}}>
-            <div ref={mapRef} id="map" style={{height:'100%'}}></div>
+            <div ref={mapRef} id="map" style={{height:'100%',zIndex:10}}></div>
         </div>
     )
 
