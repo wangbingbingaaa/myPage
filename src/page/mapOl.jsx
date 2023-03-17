@@ -10,7 +10,7 @@ import {
   
 } from '../util/olMap'
 
-const MapPage = () => {
+const MapOl = () => {
     let [mapCon,setMapCon] = useState('')
     const mapRef = useRef();
     useEffect(() => {
@@ -28,4 +28,4 @@ const MapPage = () => {
 
 
 }
-export default MapPage
+export default MapOl

@@ -3,22 +3,44 @@
     height: 100vh;
     position: relative;
     margin: 0;
+    overflow: hidden;
 }
 .center {
-    height: calc(100% - 170px);
+    height:100%;
     width: 100%;
+    position: relative;
+    .centerBoxCon {
+        position: relative;
+        top: 0;
+        height: 100%;
+        width: 100%;
+
+
+    }
+}
+.sysChange {
+    position:absolute;
+    top: 14px;
+    right: 24px;
+
 }
 .footCon {
     height: 70px;
 }
 .topHeader {
-    margin-bottom: 6px;
+position: absolute;
+top: 0;    
+z-index: 20;
+height: 90px;
+width: 100%;
 }
 .ol-mouse-position {
     background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
     color: transparent;
     -webkit-background-clip: text;
-    top: 0px;
+    top: 80px;
+    right: 20px;
+    font-weight: bold;
 }
 
 .header-line {
@@ -29,6 +51,75 @@
     background-repeat: no-repeat;
     // background-position: center
     background-position: 0% 70%;
+    @keyframes App-logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .AppLogo {
+        animation: App-logo-spin infinite 20s linear;
+        top: 2px;
+        position: absolute;
+        height: 40px;
+      }
+      
+    .header-text {
+        text-align: center;
+        height: 80px;
+        line-height: 80px;
+        color: aliceblue;
+        font-size: 34px;
+        font-weight: bold;
+        letter-spacing:.07em;
+      
+
+    }
+    .header-time {
+        background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
+        color: transparent;
+        font-weight: bold;
+        -webkit-background-clip: text;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+
+    }
+    .top-btns{
+        position: absolute;
+        top: 64px;
+        z-index: 2;
+        margin-left: 16px;
+        
+    }
+}
+
+.header2-line {
+    position: relative;
+    height: 90px;
+    background-image: url("../img/header2.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 46% 0%;
+    // background-position: center
+ 
+    @keyframes App-logo-spin {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .AppLogo {
+        animation: App-logo-spin infinite 20s linear;
+        top: 2px;
+        position: absolute;
+        height: 40px;
+      }
+      
     .header-text {
         text-align: center;
         height: 80px;
@@ -66,4 +157,16 @@
     color: #fff;
     border-radius: 5px;
     visibility: hidden;
+  }
+
+  .num_container {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+  .car2_container {
+    position: absolute;
+    top: 400px;
+    left: 20px;
+
   }

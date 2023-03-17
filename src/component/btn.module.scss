@@ -61,7 +61,7 @@
     }
 
     .cube .bgInner {
-        background: #28282d;
+        background: #0f3372;
         position: absolute;
         left: 2px;
         right: 2px;
@@ -80,14 +80,14 @@
     }
 
     .cube:hover .text {
-        color: #28282d;
+        color: #0f3372;
         transition: all 0.4s;
     }
 
     .cube:hover .bgRight,
     .cube:hover .bg,
     .cube:hover .bg-top {
-        background: #28282d;
+        background: #0f3372;
     }
 
     .cube:active {

@@ -82,7 +82,6 @@ const ThreeMap = () => {
                         // 颜色插值计算
                         var color = color1.clone().lerp(color2.clone(), gdp / gdpMax);
                         var numHeight = gdp / gdpMax * 10
-                        console.log(numHeight)
                         var mesh = prismMesh(center[0], center[1], 0.5, numHeight, color.getHex());
                         prismGroup.add(mesh);
 
@@ -192,10 +191,7 @@ const ThreeMap = () => {
             //返回.intersectObjects()参数中射线选中的网格模型对象
             // 未选中对象返回空数组[],选中一个数组1个元素，选中两个数组两个元素
             var intersects = raycaster.intersectObjects(meshGroup.children);
-            console.log("射线器返回的对象", intersects);
-            // console.log("射线投射器返回的对象 点point", intersects[0].point);
-            // console.log("射线投射器的对象 几何体",intersects[0].object.geometry.vertices)
-            // intersects.length大于0说明，说明选中了模型
+         
             if (intersects.length > 0) {
                 intersects[0].object.material.color.set(0x009999);
                 chooseMesh = intersects[0].object;

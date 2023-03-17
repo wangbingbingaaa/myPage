@@ -53,23 +53,23 @@ class GisMap extends Map {
                 //     }),
 
                 // }),
-                // //离线的
-                // new TileLayer({ // 使用XYZ的方式加载OpenStreetMap
-                //     title: "全国",
-                //     source: new XYZ({
-                //         projection: "EPSG:3857",
-                //         url: `${process.env.PUBLIC_URL}/roadmap/{z}/{x}/{y}.png`,
-                //     }),
-                // }),
-                //天地地图
-                new TileLayer({
-                    name: "天地图矢量图层",
+                //离线的
+                new TileLayer({ // 使用XYZ的方式加载OpenStreetMap
+                    title: "全国",
                     source: new XYZ({
-                        url:
-                            "http://t0.tianditu.com/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=5d27dc75ca0c3bdf34f657ffe1e9881d", //parent.TiandituKey()为天地图密钥
-                        wrapX: false
-                    })
-                })
+                        projection: "EPSG:3857",
+                        url: `${process.env.PUBLIC_URL}/roadmap/{z}/{x}/{y}.png`,
+                    }),
+                }),
+                //天地地图
+                // new TileLayer({
+                //     name: "天地图矢量图层",
+                //     source: new XYZ({
+                //         url:
+                //             "http://t0.tianditu.com/DataServer?T=cia_w&x={x}&y={y}&l={z}&tk=5d27dc75ca0c3bdf34f657ffe1e9881d", //parent.TiandituKey()为天地图密钥
+                //         wrapX: false
+                //     })
+                // })
 
             ],
 
