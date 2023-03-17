@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useEffect,useRef} from 'react'
 import 'ol/ol.css';
 import Map from 'ol/Map';
@@ -11,13 +11,14 @@ import {
 } from '../util/olMap'
 
 const MapPage = () => {
-    let map =null
+    let [mapCon,setMapCon] = useState('')
     const mapRef = useRef();
     useEffect(() => {
         // 初始化地图
-        if (!map){
-            map = new GisMap(mapRef.current)
+        if (!mapCon){
+            mapCon = new GisMap(mapRef.current)
         }
+        return () => setMapCon('')
     },[]);
     return (
         <div className="container" style={{height:'100%'}}>

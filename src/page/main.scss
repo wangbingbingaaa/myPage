@@ -1,6 +1,69 @@
-.map {
-
-    height: 500px;
-    width: 100%;
-    background-color: #ccc;
+.main_container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    margin: 0;
 }
+.center {
+    height: calc(100% - 170px);
+    width: 100%;
+}
+.footCon {
+    height: 70px;
+}
+.topHeader {
+    margin-bottom: 6px;
+}
+.ol-mouse-position {
+    background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
+    color: transparent;
+    -webkit-background-clip: text;
+    top: 0px;
+}
+
+.header-line {
+    position: relative;
+    height: 90px;
+    background-image: url("../img/header1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    // background-position: center
+    background-position: 0% 70%;
+    .header-text {
+        text-align: center;
+        height: 80px;
+        line-height: 80px;
+        color: aliceblue;
+        font-size: 34px;
+        font-weight: bold;
+        letter-spacing:.07em;
+      
+
+    }
+    .header-time {
+        background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
+        color: transparent;
+        font-weight: bold;
+        -webkit-background-clip: text;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+
+    }
+    .top-btns{
+        position: absolute;
+        top: 64px;
+        z-index: 2;
+        margin-left: 16px;
+        
+    }
+}
+
+.tagDiv {
+    position: absolute;
+    padding: 6px 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    border-radius: 5px;
+    visibility: hidden;
+  }
