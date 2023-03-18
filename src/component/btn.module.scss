@@ -225,3 +225,123 @@
       }
       
 }
+.box_btn4 {
+    height: 100%;
+    line-height: 100%;
+
+    .button2 {
+        min-width: 120px;
+        display: inline-block;
+        transition: all 0.2s ease-in;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        color: #000000;
+        padding:8px 12px;
+        font-size: 18px;
+        border-radius: 0.5em;
+        background: #393f4b;
+        border: 1px solid #1b1b1c;
+        box-shadow: 6px 6px 12px #767879,
+                   -6px -6px 12px #414141;
+      }
+      
+      .button2:active {
+        color: #e11919;
+        box-shadow: inset 4px 4px 12px #c5c5c5,
+                   inset -4px -4px 12px #5d5e5f;
+      }
+      
+      .button2:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.25);
+        top: 100%;
+        width: 140%;
+        height: 180%;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+      }
+      
+      .button2:after {
+        content: "";
+        position: absolute;
+        left: 55%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.45);
+        top: 180%;
+        width: 160%;
+        height: 190%;
+        background-color: #046985;
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+      }
+      
+      .button2:hover {
+        color: #ffffff;
+        border: 1px solid #046985;
+      }
+      
+      .button2:hover:before {
+        top: -35%;
+        background-color: #046985;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+      }
+      
+      .button2:hover:after {
+        top: -45%;
+        background-color: #046985;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+      }
+      
+}
+.box_btn5 {
+    .button {
+        margin: 0;
+        height: auto;
+        background: transparent;
+        padding: 0;
+        border: none;
+      }
+      
+      /* button styling */
+      .button {
+        --border-right: 6px;
+        --text-stroke-color: rgba(255,255,255,0.6);
+        --animation-color: #0cbbc7;
+        --fs-size: 2em;
+        letter-spacing: 3px;
+        text-decoration: none;
+        font-size: var(--fs-size);
+        font-family: "Arial";
+        position: relative;
+        text-transform: uppercase;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--text-stroke-color);
+      }
+      /* this is the text, when you hover on button */
+      .hoverText {
+        position: absolute;
+        box-sizing: border-box;
+        content: attr(data-text);
+        color: var(--animation-color);
+        width: 0%;
+        inset: 0;
+        border-right: var(--border-right) solid var(--animation-color);
+        overflow: hidden;
+        transition: 0.5s;
+        -webkit-text-stroke: 1px var(--animation-color);
+      }
+      /* hover */
+      .button:hover .hoverText {
+        width: 100%;
+        filter: drop-shadow(0 0 23px var(--animation-color))
+      }
+
+
+}

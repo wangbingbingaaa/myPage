@@ -5,10 +5,12 @@
     margin: 0;
     overflow: hidden;
 }
+
 .center {
-    height:100%;
+    height: 100%;
     width: 100%;
     position: relative;
+
     .centerBoxCon {
         position: relative;
         top: 0;
@@ -18,22 +20,26 @@
 
     }
 }
+
 .sysChange {
-    position:absolute;
+    position: absolute;
     top: 6px;
     right: 24px;
 
 }
+
 .footCon {
     height: 70px;
 }
+
 .topHeader {
-position: absolute;
-top: 0;    
-z-index: 20;
-height: 90px;
-width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+    height: 90px;
+    width: 100%;
 }
+
 .ol-mouse-position {
     background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
     color: transparent;
@@ -51,21 +57,24 @@ width: 100%;
     background-repeat: no-repeat;
     // background-position: center
     background-position: 0% 70%;
+
     @keyframes App-logo-spin {
         from {
-          transform: rotate(0deg);
+            transform: rotate(0deg);
         }
+
         to {
-          transform: rotate(360deg);
+            transform: rotate(360deg);
         }
-      }
-      .AppLogo {
+    }
+
+    .AppLogo {
         animation: App-logo-spin infinite 20s linear;
         top: 2px;
         position: absolute;
         height: 40px;
-      }
-      
+    }
+
     .header-text {
         text-align: center;
         height: 80px;
@@ -73,10 +82,11 @@ width: 100%;
         color: aliceblue;
         font-size: 34px;
         font-weight: bold;
-        letter-spacing:.07em;
-      
+        letter-spacing: .07em;
+
 
     }
+
     .header-time {
         background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
         color: transparent;
@@ -87,12 +97,13 @@ width: 100%;
         right: 20px;
 
     }
-    .top-btns{
+
+    .top-btns {
         position: absolute;
         top: 64px;
         z-index: 2;
         margin-left: 16px;
-        
+
     }
 }
 
@@ -104,22 +115,24 @@ width: 100%;
     background-repeat: no-repeat;
     background-position: 46% 0%;
     // background-position: center
- 
+
     @keyframes App-logo-spin {
         from {
-          transform: rotate(0deg);
+            transform: rotate(0deg);
         }
+
         to {
-          transform: rotate(360deg);
+            transform: rotate(360deg);
         }
-      }
-      .AppLogo {
+    }
+
+    .AppLogo {
         animation: App-logo-spin infinite 20s linear;
         top: 2px;
         position: absolute;
         height: 40px;
-      }
-      
+    }
+
     .header-text {
         text-align: center;
         height: 80px;
@@ -127,10 +140,11 @@ width: 100%;
         color: aliceblue;
         font-size: 34px;
         font-weight: bold;
-        letter-spacing:.07em;
-      
+        letter-spacing: .07em;
+
 
     }
+
     .header-time {
         background-image: linear-gradient(to right, #20c7f9, rgb(220, 100, 15));
         color: transparent;
@@ -141,12 +155,13 @@ width: 100%;
         right: 20px;
 
     }
-    .top-btns{
+
+    .top-btns {
         position: absolute;
         top: 64px;
         z-index: 2;
         margin-left: 16px;
-        
+
     }
 }
 
@@ -157,16 +172,89 @@ width: 100%;
     color: #fff;
     border-radius: 5px;
     visibility: hidden;
-  }
+}
 
-  .num_container {
+.num_container {
     position: absolute;
     top: 100px;
     left: 20px;
-  }
-  .car2_container {
+}
+
+.car2_container {
     position: absolute;
     top: 400px;
     left: 20px;
 
-  }
+}
+.center_btn {
+    position: absolute;
+    top: 130px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.footCon {
+    height: 60px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background-color: #2f333b;
+
+    .foot-container {
+        display: flex;
+        flex-direction: column;
+        margin: 0px;
+        padding: 0px;
+        width: 100%;
+    }
+    .footer-div {
+        height: 70px;
+        line-height: 70px;
+        width: 100%;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        border-top: 1px solid #222;
+        justify-content: center;
+    
+        .mapshow-icon {
+            position: absolute;
+            right: 20px;
+        }
+    }
+    
+    .nav-line {
+        height: 70px;
+        line-height: 70px;
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+        margin: 8px 12px;
+        color: aliceblue;
+    
+        .nav-btn {
+            height: 46px;
+            border-radius: 24px;
+            line-height: 46px;
+            text-align: center;
+            font-size:16px;
+            flex: 1;
+            cursor: pointer;
+            color: #4bb7ec;
+            box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.6);
+            // border: 1px solid #0F95D8;
+            background-image: linear-gradient(#0b8a6a, rgb(25, 49, 31));
+    
+            &:hover {
+                color: #0F95D8;
+            }
+        }
+    
+        .active {
+            color: #0F95D8;
+            border: 1px solid #0F95D8;
+        }
+    }
+
+
+}

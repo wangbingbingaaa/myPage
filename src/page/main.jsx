@@ -5,6 +5,7 @@ import Header2 from './Header2'
 import ThreeMap from './ThreeMap'
 import BoxBtn3 from '../component/boxBtn3'
 import NumShow from './numShow'
+import FootCon from './FootCon';
 
 import './main.scss'
 const MainPage = () => {
@@ -45,6 +46,9 @@ const MainPage = () => {
 
                 </div>
                 <div className="footCon">
+                {
+                        mapVal == true ?
+                    <FootCon ></FootCon> : ''}
 
                 </div>
 
