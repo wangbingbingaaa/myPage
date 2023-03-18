@@ -5,7 +5,7 @@ import * as THREE from './three/three.module';
 // 矩形平面网格模型设置背景透明的png贴图
 var geometry = new THREE.PlaneBufferGeometry(1, 1); //默认在XOY平面上
 var textureLoader = new THREE.TextureLoader(); // TextureLoader创建一个纹理加载器对象
-var texture = textureLoader.load('./光圈贴图.png');
+var texture = textureLoader.load(`${process.env.PUBLIC_URL}/guangquan.png`);
 
 
 // 每个mesh材质透明度如果不是同步变化，材质不能共享

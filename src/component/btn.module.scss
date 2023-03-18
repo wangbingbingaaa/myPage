@@ -101,3 +101,127 @@
         }
     }
 }
+.box_btn2 {
+
+    button {
+       min-width: 70px;
+        position: relative;
+        height: 30px;
+        border: 3px ridge #149CEA;
+        outline: none;
+        background-color: transparent;
+        color: white;
+        transition: 1s;
+        border-radius:8px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      
+      button::after {
+        content: "";
+        position: absolute;
+        top: -10px;
+        left: 3%;
+        width: 95%;
+        height: 40%;
+        background-color: transparent;
+        transition: 0.5s;
+        transform-origin: center;
+      }
+      
+      button::before {
+        content: "";
+        transform-origin: center;
+        position: absolute;
+        top: 80%;
+        left: 3%;
+        width: 95%;
+        height: 40%;
+        background-color: transparent;
+        transition: 0.5s;
+      }
+      
+      button:hover::before, button:hover::after {
+        transform: scale(0)
+      }
+      
+      button:hover {
+        box-shadow: inset 0px 0px 25px #1479EA;
+      }
+}
+.box_btn3{
+
+    button {
+        position: relative;
+        padding: 8px 20px;
+        border-radius: 7px;
+        border: 1px solid #282C34;
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 2px;
+        background: transparent;
+        color: #fff;
+        overflow: hidden;
+        box-shadow: 0 0 0 0 transparent;
+        -webkit-transition: all 0.2s ease-in;
+        -moz-transition: all 0.2s ease-in;
+        transition: all 0.2s ease-in;
+      }
+      
+      button:hover {
+        background: #037b9f;
+        box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        transition: all 0.2s ease-out;
+      }
+      
+      button:hover::before {
+        -webkit-animation: sh02 0.5s 0s linear;
+        -moz-animation: sh02 0.5s 0s linear;
+        animation: sh02 0.5s 0s linear;
+      }
+      
+      button::before {
+        content: '';
+        display: block;
+        width: 0px;
+        height: 86%;
+        position: absolute;
+        top: 7%;
+        left: 0%;
+        opacity: 0;
+        background: #fff;
+        box-shadow: 0 0 50px 30px #fff;
+        -webkit-transform: skewX(-20deg);
+        -moz-transform: skewX(-20deg);
+        -ms-transform: skewX(-20deg);
+        -o-transform: skewX(-20deg);
+        transform: skewX(-20deg);
+      }
+      
+      @keyframes sh02 {
+        from {
+          opacity: 0;
+          left: 0%;
+        }
+      
+        50% {
+          opacity: 1;
+        }
+      
+        to {
+          opacity: 0;
+          left: 100%;
+        }
+      }
+      
+      button:active {
+        box-shadow: 0 0 0 0 transparent;
+        -webkit-transition: box-shadow 0.2s ease-in;
+        -moz-transition: box-shadow 0.2s ease-in;
+        transition: box-shadow 0.2s ease-in;
+      }
+      
+}

@@ -3,7 +3,7 @@ import MapOl from './mapOl';
 import Header from './Header'
 import Header2 from './Header2'
 import ThreeMap from './ThreeMap'
-import BoxBtn from '../component/boxBtn'
+import BoxBtn3 from '../component/boxBtn3'
 import NumShow from './numShow'
 
 import './main.scss'
@@ -27,7 +27,7 @@ const MainPage = () => {
                         <Header/> : <Header2/>
                     }
                       <div className='sysChange'>
-                    <BoxBtn text="切换系统" upBtn={btnOper}/>
+                    <BoxBtn3 text="切换系统" upBtn={btnOper}/>
                     </div>
 
                 </div>
@@ -37,6 +37,7 @@ const MainPage = () => {
                         <>
                          <ThreeMap/> 
                          <NumShow></NumShow>
+                         
                         </>
                        : <MapOl ></MapOl>
                     }

@@ -125,7 +125,7 @@ const ThreeMap = () => {
 
         var k = width / height; //窗口宽高比
         // var s = 200;
-        var s = 17;//根据包围盒大小(行政区域经纬度分布范围大小)设置渲染范围
+        var s = 18;//根据包围盒大小(行政区域经纬度分布范围大小)设置渲染范围
         //创建相机对象
         var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
 
@@ -177,7 +177,7 @@ const ThreeMap = () => {
         var chooseMesh = null;//标记鼠标拾取到的mesh
         function choose (event) {
             if (chooseMesh) {
-                chooseMesh.material.color.set(0x004444);//恢复原来颜色
+                chooseMesh.material.color.set(0x0E7EA5);//恢复原来颜色
             }
             var Sx = event.clientX; //鼠标单击位置横坐标
             var Sy = event.clientY; //鼠标单击位置纵坐标
@@ -193,7 +193,7 @@ const ThreeMap = () => {
             var intersects = raycaster.intersectObjects(meshGroup.children);
          
             if (intersects.length > 0) {
-                intersects[0].object.material.color.set(0x009999);
+                intersects[0].object.material.color.set(0x0E7EA5);
                 chooseMesh = intersects[0].object;
             }
         }
