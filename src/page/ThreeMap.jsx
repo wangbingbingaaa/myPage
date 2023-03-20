@@ -6,8 +6,6 @@ import './main.scss'
 
 import { wordLine } from '../util/line.js';
 import { ExtrudeMesh } from '../util/ExtrudeMesh.js';
-import { cityPointMesh } from '../util/cityPointMesh'
-import { ConeMesh } from '../util/ConeMesh.js';
 import { tag, createLabelRender } from '../util/tag.js';
 import { prismMesh } from '../util/prismMesh.js';
 

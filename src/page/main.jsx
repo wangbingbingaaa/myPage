@@ -6,51 +6,53 @@ import ThreeMap from './ThreeMap'
 import BoxBtn3 from '../component/boxBtn3'
 import NumShow from './numShow'
 import FootCon from './FootCon';
+import FlyLineTree from './flyLineTree'
 
 import './main.scss'
 const MainPage = () => {
-    let [mapVal,setMapVal] = useState(true)
+    let [mapVal, setMapVal] = useState(true)
+    let [threeType, setThreeType] = useState(true)
 
-    const btnOper =()=>{
+    const btnOper = () => {
         setMapVal(!mapVal)
         console.log('000')
+
+    }
+    const mapChange = () => {
+        setThreeType(!threeType)
 
     }
     return (
         <>
             <div className='main_container'>
                 <div className='topHeader'>
-                  
-                    {/* <Header changeMap={changeMap}></Header> */}
-
                     {
-                        mapVal == true ?
-                        <Header/> : <Header2/>
+                        mapVal == true ? <Header /> : <Header2 />
                     }
-                      <div className='sysChange'>
-                    <BoxBtn3 text="切换系统" upBtn={btnOper}/>
+                    <div className='sysChange'>
+                        <BoxBtn3 text="切换系统" upBtn={btnOper} />
                     </div>
 
                 </div>
                 <div className='center'>
                     {
                         mapVal == true ?
-                        <>
-                         <ThreeMap/> 
-                         <NumShow></NumShow>
-                         
-                        </>
-                       : <MapOl ></MapOl>
+                            <>
+                                {threeType ? <FlyLineTree /> : <ThreeMap />}
+                                <NumShow mapChange={mapChange}></NumShow>
+                            </>
+                            : <MapOl ></MapOl>
                     }
-                       
+
 
                 </div>
-                <div className="footCon">
                 {
-                        mapVal == true ?
-                    <FootCon ></FootCon> : ''}
-
-                </div>
+                    mapVal == true ?
+                        <div className="footCon">
+                            <FootCon ></FootCon>
+                        </div>
+                        : ''
+                }
 
             </div>
 

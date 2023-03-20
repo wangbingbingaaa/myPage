@@ -49,10 +49,10 @@ const FootCon = () => {
                 <div className="footer-div">
                     <div className="nav-line">
                         {
-                            btns.map((item) => {
+                            btns.map((item,index) => {
                                 return (
 
-                                    <div>
+                                    <div key={index}>
                                         <i className="item.icon"></i>
                                         <BoxBtn4 text={`${item.name}`} btnOper={btnOper}></BoxBtn4>
                                     </div>
