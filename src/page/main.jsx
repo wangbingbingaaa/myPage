@@ -15,7 +15,6 @@ const MainPage = () => {
 
     const btnOper = () => {
         setMapVal(!mapVal)
-        console.log('000')
 
     }
     const mapChange = () => {

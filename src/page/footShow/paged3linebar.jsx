@@ -257,7 +257,6 @@ const Paged3linebar = (props) => {
         dataCal.forEach(function (series) {
             chart.addSeries(series);
         });
-        console.log(chart, '555')
 
         chart.render();
 

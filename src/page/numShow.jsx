@@ -6,7 +6,6 @@ import CarShow2 from '../component/card2'
 import HelloPage1 from '../component/helloPage'
 const NumShow = (props) => {
     const btnOper =()=>{
-        console.log('000')
         props.mapChange()
 
     }

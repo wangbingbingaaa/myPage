@@ -13,7 +13,7 @@ const Paged3Bar =(props)=>{
           ]
    
     const margin = { top: 30, right: 0, bottom: 0, left: 30 }
-    const width = 540
+    const width = 700
     const height = 300
     let chart = d3
       .select('#barChart').append( "svg" )
@@ -85,8 +85,7 @@ const Paged3Bar =(props)=>{
       .attr('fill', function(d) {
         return z(d.key)
       })
-      .attr('height', 0)
-      .attr('y', height)
+     
       .transition()
       .duration(750)
       .delay(function(d, i) {

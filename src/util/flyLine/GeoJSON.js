@@ -59,7 +59,6 @@ function extrudeMeshFun (childAreaArr, mapGroup, h) {
 }
 //提取行政区域所有子区域边界数据
 function childAreaArrFun (data) {
-    console.log(data)
     var childAreaArr = [];
     data.features.forEach(function (childArea) {
         var area = {

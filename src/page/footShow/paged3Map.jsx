@@ -30,13 +30,13 @@ const Pageded3Map = (props) => {
                 .enter()
                 .append("path")
                 .attr("class", "province")
-                .attr("stroke", "#333")
-                .attr("stroke-width", "0.2px")
+                .attr("stroke", "#0F7CC4")
+                .attr("stroke-width", "0.4px")
                 .attr("fill", 'none') 
                 .attr("d", (d, i) => geoPath(d))  //使用路径生成器
-                .on("mouseover",function(d,i){
-                    console.log(i);
-       
+                .on('mouseover', function(d, i) {
+                  })
+                  .on('mouseout', function(d, i) {
                   })
     
             

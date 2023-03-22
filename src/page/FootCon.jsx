@@ -31,7 +31,6 @@ const FootCon = () => {
 
     }, [])
     const btnOper = (e) => {
-        console.log('000', e)
         setActiveNav(e)
         setIsModalOpen(true);
     }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import style from './hello.module.scss'
 // import useAnime from './animejs'
 const HelloPage1 = (props) => {
-    console.log(useAnime)
     const animVal = {
         rotateZ: 360,
         duration: 8000,
