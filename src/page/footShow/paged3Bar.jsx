@@ -1,17 +1,24 @@
 
 import React, { useEffect, useState } from 'react';
 import * as d3 from 'd3';
-import * as d3Tip from 'd3-tip'
 const Paged3Bar =(props)=>{
     useEffect(()=>{
+        const data = [
+            { date: '2011', q1: 155, q2: 200, q3: 214, q4: 234 },
+            { date: '2012', q1: 165, q2: 210, q3: 244, q4: 254 },
+            { date: '2013', q1: 175, q2: 230, q3: 274, q4: 274 },
+            { date: '2014', q1: 185, q2: 250, q3: 304, q4: 294 },
+            { date: '2015', q1: 195, q2: 270, q3: 334, q4: 314 },
+            { date: '2016', q1: 205, q2: 290, q3: 364, q4: null }
+          ]
    
-    const margin = { top: 80, right: 80, bottom: 30, left: 60 }
-    const width = 640
+    const margin = { top: 30, right: 0, bottom: 0, left: 30 }
+    const width = 540
     const height = 300
     let chart = d3
       .select('#barChart').append( "svg" )
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top +margin.bottom)
+      .attr('width', 800)
+      .attr('height', 400)
 
     let x0 = d3
       .scaleBand()
@@ -26,14 +33,7 @@ const Paged3Bar =(props)=>{
       .scaleOrdinal()
       .range(['#98abc5', '#7b6888', '#a05d56', '#ff8c00'])
 
-      const data = [
-        { date: '2011', q1: 155, q2: 200, q3: 214, q4: 234 },
-        { date: '2012', q1: 165, q2: 210, q3: 244, q4: 254 },
-        { date: '2013', q1: 175, q2: 230, q3: 274, q4: 274 },
-        { date: '2014', q1: 185, q2: 250, q3: 304, q4: 294 },
-        { date: '2015', q1: 195, q2: 270, q3: 334, q4: 314 },
-        { date: '2016', q1: 205, q2: 290, q3: 364, q4: null }
-      ]
+     
     let keys = Object.keys(data[0]).slice(1)
     const names = {
       q1: '第一季度',
@@ -41,22 +41,7 @@ const Paged3Bar =(props)=>{
       q3: '第三季度',
       q4: '第四季度'
     }
-    // console.log(d3Tip())
-
-    // let tip = d3Tip // 设置tip
-    //   .attr('class', 'd3-tip')
-    //   .offset([-10, 0])
-    //   .html(function(d) {
-    //     return (
-    //       '<strong>' +
-    //       names[d.key] +
-    //       "<br>营收:</strong> <span style='color:#ffeb3b'>" +
-    //       d.value +
-    //       ' 万</span>'
-    //     )
-    //   })
-
-    // chart.call(tip)
+   
     x0.domain(
       data.map(function(d) {
         return d.date
@@ -92,8 +77,6 @@ const Paged3Bar =(props)=>{
       }) // 把json数据转格式
       .enter()
       .append('rect')
-    //   .on('mouseover', tip.show)
-    //   .on('mouseout', tip.hide)
       .attr('x', function(d) {
         return x1(d.key)
       })
