@@ -1,0 +1,33 @@
+.linebar3d {
+    .axis .grid-line{
+        stroke: black;
+        shape-rendering: crispEdges;
+        stroke-opacity: .2;
+    }
+    
+    .line{
+        fill: none;    
+        stroke: steelblue;
+        stroke-width: 2;
+    }
+    
+    .dot {
+      fill: #fff;
+      stroke: steelblue;
+    }
+    
+    .area {
+        stroke: none;
+        fill: steelblue;
+        fill-opacity: .2;
+    }
+    .btn_box_btn3__DIEAW button {
+        color: #47a7f1;
+    
+    }
+    .btn_box_btn3__DIEAW button:hover {
+        color: #ffffff;
+    }
+
+}
+

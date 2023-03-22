@@ -1,4 +1,4 @@
-import anime, { AnimeParams, AnimeInstance } from 'animejs';
+// import anime, { AnimeParams, AnimeInstance } from 'animejs';
 import { useRef, useLayoutEffect } from 'react';
 
 const useAnime = (props) => {

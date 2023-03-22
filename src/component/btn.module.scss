@@ -61,7 +61,7 @@
     }
 
     .cube .bgInner {
-        background: #0f3372;
+        background: #1c5ac5;
         position: absolute;
         left: 2px;
         right: 2px;
@@ -80,14 +80,14 @@
     }
 
     .cube:hover .text {
-        color: #0f3372;
+        color: #1c5ac5;
         transition: all 0.4s;
     }
 
     .cube:hover .bgRight,
     .cube:hover .bg,
     .cube:hover .bg-top {
-        background: #0f3372;
+        background: #1c5ac5;
     }
 
     .cube:active {
@@ -240,9 +240,9 @@
         padding:8px 12px;
         font-size: 18px;
         border-radius: 0.5em;
-        background: #4c5661;
+        background: #5b636d;
         border: 1px solid #1b1b1c;
-        box-shadow: 6px 6px 12px #767879,
+        box-shadow: 6px 6px 12px #a6a8a9,
                    -6px -6px 12px #414141;
       }
       

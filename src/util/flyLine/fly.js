@@ -113,7 +113,6 @@ function centerCamera (mapGroup, camera, k) {
     /*可以根据中国地图mapGroup的包围盒尺寸设置相机参数s */
     var scaleV3 = new THREE.Vector3(); //scaleV3表示包围盒长宽高尺寸
     box3.getSize(scaleV3) // .getSize()计算包围盒长宽高尺寸
-    console.log('查看包围盒尺寸', scaleV3)
     // frame.js文件中var s = 150; 150更改为scaleV3.x/2
     var maxL = maxLFun(scaleV3);
     //重新设置s值 乘以0.5适当缩小显示范围，地图占canvas画布比例更大，自然渲染范围更大
