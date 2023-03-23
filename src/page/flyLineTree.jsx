@@ -61,7 +61,7 @@ const FlyLineTree = () => {
                     }
                 );
                 var material = new THREE.MeshPhongMaterial({
-                    color: 0x16344B,
+                    color: 0x278EB4,
                     // transparent: true,
                     // opacity: 0.8,
                 }); //材质对象
@@ -70,7 +70,7 @@ const FlyLineTree = () => {
                 // 河南是默认发射点，颜色比其他省份颜色更亮一些进行标识
                 if (childArea.name == '河南') {
                     mesh.material = new THREE.MeshPhongMaterial({
-                        color: 0x16344B,
+                        color: 0x0Ff000,
                     });
                     chooseMesh = mesh;
                 }
@@ -322,9 +322,9 @@ const FlyLineTree = () => {
         var intersects = choose(event); //射线拾取结果
         if (intersects.length > 0) { // intersects.length大于0说明，说明选中了模型
           // 原来飞线发射省份恢复选中前的颜色
-          if (chooseMesh) chooseMesh.material.color.set(0x004444);
+          if (chooseMesh) chooseMesh.material.color.set(0x084058);
           // 提升旋转省份颜色亮度
-          intersects[0].object.material.color.set(0x006666);
+          intersects[0].object.material.color.set(0x0F5D79);
           // chooseMesh指向新的发射中心Mesh
           chooseMesh = intersects[0].object;
           updateFly(chooseMesh.name); //绘制当前省份作为起点的所有飞线

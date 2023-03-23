@@ -191,7 +191,7 @@ const ThreeMap = () => {
             var intersects = raycaster.intersectObjects(meshGroup.children);
          
             if (intersects.length > 0) {
-                intersects[0].object.material.color.set(0x0E7EA5);
+                intersects[0].object.material.color.set(0x278EB4);
                 chooseMesh = intersects[0].object;
             }
         }
