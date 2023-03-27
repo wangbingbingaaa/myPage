@@ -31,8 +31,14 @@ const FootCon = () => {
 
     }, [])
     const btnOper = (e) => {
-        setActiveNav(e)
-        setIsModalOpen(true);
+        console.log(e)
+        if (e === 'Echart'){
+            window.open("https://wangbingbingaaa.github.io/vue3_myPage");
+        }else {
+            setActiveNav(e)
+            setIsModalOpen(true);
+        }
+     
     }
 
     const handleOk = () => {
