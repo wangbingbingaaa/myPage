@@ -322,9 +322,9 @@ const FlyLineTree = () => {
         var intersects = choose(event); //射线拾取结果
         if (intersects.length > 0) { // intersects.length大于0说明，说明选中了模型
           // 原来飞线发射省份恢复选中前的颜色
-          if (chooseMesh) chooseMesh.material.color.set(0x084058);
+          if (chooseMesh) chooseMesh.material.color.set(0x278EB4);
           // 提升旋转省份颜色亮度
-          intersects[0].object.material.color.set(0x0F5D79);
+          intersects[0].object.material.color.set(0x126C8B);
           // chooseMesh指向新的发射中心Mesh
           chooseMesh = intersects[0].object;
           updateFly(chooseMesh.name); //绘制当前省份作为起点的所有飞线

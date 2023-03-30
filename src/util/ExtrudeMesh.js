@@ -15,7 +15,7 @@ function ExtrudeMesh (pointsArrs, height) {
     // MeshBasicMaterial:不受光照影响
     // MeshLambertMaterial：几何体表面和光线角度不同，明暗不同
     var material = new THREE.MeshLambertMaterial({
-        color: 0x16344B,
+        color: 0x207594,
         // transparent: true,
         // opacity: 0.8,
     }); //材质对象

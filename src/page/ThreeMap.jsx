@@ -151,16 +151,9 @@ const ThreeMap = () => {
         var _s = 2.0;
         // 渲染函数
         function render () {
-
             renderer.render(scene, camera); //执行渲染操作
-          
             labelRenderer.render(scene, camera);
-
-
-
-
             requestAnimationFrame(render); //请求再次执行渲染函数render，渲染下一帧
-            // console.log(camera.position);
         }
         render();
         //创建控件对象  控件可以监听鼠标的变化，改变相机对象的属性
@@ -175,7 +168,7 @@ const ThreeMap = () => {
         var chooseMesh = null;//标记鼠标拾取到的mesh
         function choose (event) {
             if (chooseMesh) {
-                chooseMesh.material.color.set(0x0E7EA5);//恢复原来颜色
+                chooseMesh.material.color.set(0x2E8BAA);//恢复原来颜色
             }
             var Sx = event.clientX; //鼠标单击位置横坐标
             var Sy = event.clientY; //鼠标单击位置纵坐标
@@ -191,16 +184,13 @@ const ThreeMap = () => {
             var intersects = raycaster.intersectObjects(meshGroup.children);
          
             if (intersects.length > 0) {
-                intersects[0].object.material.color.set(0x278EB4);
+                intersects[0].object.material.color.set(0x2E8BAA);
                 chooseMesh = intersects[0].object;
             }
         }
         addEventListener('click', choose); // 监听窗口鼠标单击事件
 
     }
-
-
-
 
     return (
         <div className="threeContainer" id='threemapdiv' style={{ height: '100%', width: '100%', }}>

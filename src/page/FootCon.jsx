@@ -14,11 +14,11 @@ const FootCon = () => {
     }, {
         name: 'D3'
     }, {
-        name: 'Echart'
-    }, {
         name: 'Canvas'
     }, {
-        name: 'Css'
+        name: 'Echart'
+    }, {
+        name: 'UI'
     }, {
         name: '3D'
     }])
@@ -28,12 +28,16 @@ const FootCon = () => {
 
     useEffect(() => {
 
-
     }, [])
+    
     const btnOper = (e) => {
         console.log(e)
         if (e === 'Echart'){
             window.open("https://wangbingbingaaa.github.io/vue3_myPage");
+        }else if (e === '3D'){
+            window.open("https://wangbingbingaaa.github.io/vue3_myPage/3d");
+        }else if (e === 'UI'){
+            window.open("https://wangbingbingaaa.github.io/vue3_myPage/ui");
         }else {
             setActiveNav(e)
             setIsModalOpen(true);
