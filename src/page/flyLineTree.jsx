@@ -201,7 +201,7 @@ const FlyLineTree = () => {
         var width = document.getElementById('flyLine').clientWidth; //窗口宽度
         var height = document.getElementById('flyLine').clientHeight; //窗口高度
         // mapHeight：根据行政区尺寸范围设置，比如高度设置为地图尺寸范围的2%、5%等，过小感觉不到高度，过大太高了
-        var mapHeight = 0.8;//拉伸高度
+        var mapHeight = 1;//拉伸高度
         lineGroup.position.z = mapHeight + mapHeight * 0.1;//适当偏移解决深度冲突
 
         var loader = new THREE.FileLoader();
@@ -245,10 +245,11 @@ const FlyLineTree = () => {
 
         var k = width / height; //窗口宽高比
         var s = 150;//根据包围盒大小(行政区域经纬度分布范围大小)设置渲染范围
-        //创建相机对象
+        // //创建相机对象
         var camera = new THREE.OrthographicCamera(-s * k, s * k, s, -s, 1, 1000);
-        camera.position.set(11, 280, 299); //设置相机位置
+        camera.position.set(15, 330, 188); //设置相机位置
         camera.lookAt(scene.position); //设置相机方向(指向的场景对象)
+        camera.scale.set(1.6,1.6,1.6)
         /**
          * 创建渲染器对象
          */
@@ -260,7 +261,8 @@ const FlyLineTree = () => {
 
         document.getElementById('flyLine').appendChild(renderer.domElement);
         var controls = new OrbitControls(camera, renderer.domElement);
-        controls.target.set(2.6, 10.5, 4);
+        controls.target.set(15.0339, 9.654158, 0.409268);
+        // controls.target.set(2.6, 10.5, 7);
         controls.update();
 
         // 光圈大小在原大小基础上1~2.5倍在之间变化,也就是mesh.size范围2~5之间

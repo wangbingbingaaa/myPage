@@ -130,6 +130,7 @@ const ThreeMap = () => {
         // 通过OrbitControls在控制台打印相机位置选择一个合适的位置
         camera.position.set(104, -105, 200);
         camera.lookAt(104, 35, 0); //指向中国地图的几何中心
+        camera.scale.set(1.3,1.3,1.3)
         /**
          * 创建渲染器对象
          */
@@ -151,6 +152,7 @@ const ThreeMap = () => {
         var _s = 2.0;
         // 渲染函数
         function render () {
+            
             renderer.render(scene, camera); //执行渲染操作
             labelRenderer.render(scene, camera);
             requestAnimationFrame(render); //请求再次执行渲染函数render，渲染下一帧
@@ -161,12 +163,13 @@ const ThreeMap = () => {
 
         var controls = new OrbitControls(camera, renderer.domElement);
         // 相机控件与.lookAt()无效( .target属性 )
-        controls.target.set(104, 35, 0);
+        controls.target.set(115, 35, 0);
         controls.update();//update()函数内会执行camera.lookAt(controls.target)
 
 
         var chooseMesh = null;//标记鼠标拾取到的mesh
         function choose (event) {
+            console.log(controls.target,camera.position)
             if (chooseMesh) {
                 chooseMesh.material.color.set(0x2E8BAA);//恢复原来颜色
             }
