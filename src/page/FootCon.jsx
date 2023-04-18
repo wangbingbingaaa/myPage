@@ -35,9 +35,9 @@ const FootCon = () => {
         if (e === 'Echart'){
             window.open("https://wangbingbingaaa.github.io/vue3_myPage");
         }else if (e === '3D'){
-            window.open("https://wangbingbingaaa.github.io/vue3_myPage/3d");
+            window.open("https://wangbingbingaaa.github.io/vue3_myPage/#/3d");
         }else if (e === 'UI'){
-            window.open("https://wangbingbingaaa.github.io/vue3_myPage/ui");
+            window.open("https://wangbingbingaaa.github.io/vue3_myPage/#/ui");
         }else {
             setActiveNav(e)
             setIsModalOpen(true);

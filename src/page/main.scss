@@ -20,6 +20,24 @@
 
     }
 }
+.num_r_con {
+    position: absolute;
+    right: 10px;
+    top: 90px;
+    height: calc(100% - 170px);
+    width: 40%;
+    .chart-top {
+        height: 100%;
+        width: 100%;
+
+    }
+    .chart-down {
+        height: 100%;
+        width: 100%;
+
+    }
+
+}
 
 .sysChange {
     position: absolute;
