@@ -19,6 +19,7 @@ import { Draw } from "ol/interaction";
 import { createRegularPolygon, createBox } from "ol/interaction/Draw";
 import { Modify } from "ol/interaction"
 import { defaults as defaultControls, OverviewMap } from "ol/control";
+import { LineString } from "ol/geom"; 'ol/geom'
 
 window._overlayIndex = 20000;   //overlay的z-index从200开始
 class GisMap extends Map {

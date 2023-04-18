@@ -17,11 +17,14 @@ import {
     EllipseFeature,
 
 } from '../util/olMap'
+import { DragPan } from "ol/interaction";
+
 import { featureData, labelToValue } from './fetureData'
 import {
     CloseOutlined,
    
 } from '@ant-design/icons';
+import { Points } from '../util/three/three.module';
 
 const MapOl = () => {
     // let [mapCon, setMapCon] = useState('')
@@ -35,14 +38,15 @@ const MapOl = () => {
             mapCon = new GisMap(mapRef.current)
             window.mapCon = mapCon;
             layer = new GisLayer(mapCon);
+            window.layer = layer
             featureInit()
             setTimeout(()=>{
                 createDetailBox()
             },1000)
         }
         mapCon.featureClick =((e,feature)=>{
-            let layer = window.mapCon.getOverlayById(`${feature.values_.batch}-overlay`);
-            layer.setPos(feature.getPosition());
+            let _layer = window.mapCon.getOverlayById(`${feature.values_.batch}-overlay`);
+            _layer.setPos(feature.getPosition());
 
         })
         // return () => setMapCon('')
@@ -54,13 +58,57 @@ const MapOl = () => {
       }, [overlayerList]);
    
     const closeOverlay = (cur) => {
-        let layer = window.mapCon.getOverlayById(cur.id);
-        layer.setPos(undefined);
+        let _layer = window.mapCon.getOverlayById(cur.id);
+        _layer.setPos(undefined);
+        let line = window.mapCon.getFeatureById(`${cur.id}-line`)
+        line.getGeometry().setCoordinates([[0,0],[0,0]]);
     }
     const createDetailBox =()=>{
         overlayerList.forEach((ele)=>{
-            let elemenet = document.getElementById(ele.id)
-            let _overlay = window.mapCon.createOverlay(elemenet,[0,0],ele.id)
+            let fId = ele.id.replace('-overlay','') 
+            let nextFeature = window.mapCon.getFeatureById(fId)
+            let element = document.getElementById(ele.id)
+            let _overlay = window.mapCon.createOverlay(element,[0,0],ele.id)
+            // 连接线
+            let Pos = [[0,0],[0,0]];
+            let lineFeatrue = new LineFeature({
+                id:`${ele.id}-line`,
+                points:Pos,
+                color:'#000000'
+                
+            })
+            window.layer.addFeature(lineFeatrue);
+            var dragPan;
+            window.mapCon.getInteractions().forEach(function (interaction) {
+                if (interaction instanceof DragPan) {
+                    dragPan = interaction;
+                }
+            });
+    
+            element.addEventListener('mousedown', function (evt) {
+                dragPan.setActive(false);
+                _overlay.set('dragging', true);
+                window.mapCon.on('pointermove', function (evt) {
+                    var startPoint = nextFeature.getGeometry().getCoordinates();
+                    if (_overlay.get('dragging')) {
+                        var dd2 = window.mapCon.getPixelFromCoordinate(evt.coordinate);
+                        var newX = dd2[0] ;
+                        var newY = dd2[1];
+                        var newPoint = window.mapCon.getCoordinateFromPixel([newX, newY]);
+                        _overlay.setPosition(newPoint);
+                        lineFeatrue.getGeometry().setCoordinates([startPoint, evt.coordinate]);
+                    }
+                });
+                window.mapCon.on('pointerup', function (evt) {
+                    if (_overlay.get('dragging') === true) {
+                        dragPan.setActive(true);
+                        _overlay.set('dragging', false);
+                    }
+                });
+            });
+    
+           
+
         })
 
     }
