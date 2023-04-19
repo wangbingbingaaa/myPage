@@ -18,20 +18,34 @@ import {
 
 } from '../util/olMap'
 import { DragPan } from "ol/interaction";
-
-import { featureData, labelToValue } from './fetureData'
-import {
-    CloseOutlined,
-   
-} from '@ant-design/icons';
 import { Points } from '../util/three/three.module';
 
+import { featureData, labelToValue } from './fetureData'
+import { tsqd, drawPolygon, drawRect, drawCircle, drawLine, clearDrawCache } from '../util/map-op';
+import {
+    CloseOutlined,
+} from '@ant-design/icons';
+import { Button, Modal,Form, Input, Radio } from 'antd';
+import MapGetVal from './mapGetVal';
+
 const MapOl = () => {
-    // let [mapCon, setMapCon] = useState('')
+    let [btnType, setBtnType] = useState('')
     let [overlayerList, setoverlayerList] = useState([])
+    let [posArray,setPosArry] = useState([])
     const mapRef = useRef();
     let layer;
-    let mapCon
+    let mapCon;
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const showModal = (type) => {
+        setIsModalOpen(true);
+        setBtnType(type)
+    };
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
     useEffect(() => {
         // 初始化地图
         if (!mapCon) {
@@ -40,11 +54,11 @@ const MapOl = () => {
             layer = new GisLayer(mapCon);
             window.layer = layer
             featureInit()
-            setTimeout(()=>{
+            setTimeout(() => {
                 createDetailBox()
-            },1000)
+            }, 1000)
         }
-        mapCon.featureClick =((e,feature)=>{
+        mapCon.featureClick = ((e, feature) => {
             let _layer = window.mapCon.getOverlayById(`${feature.values_.batch}-overlay`);
             _layer.setPos(feature.getPosition());
 
@@ -52,30 +66,30 @@ const MapOl = () => {
         // return () => setMapCon('')
     }, []);
     useEffect(() => {
-        if (overlayerList.length ){
+        if (overlayerList.length) {
             createDetailBox()
         }
-      }, [overlayerList]);
-   
+    }, [overlayerList]);
+
     const closeOverlay = (cur) => {
         let _layer = window.mapCon.getOverlayById(cur.id);
         _layer.setPos(undefined);
         let line = window.mapCon.getFeatureById(`${cur.id}-line`)
-        line.getGeometry().setCoordinates([[0,0],[0,0]]);
+        line.getGeometry().setCoordinates([[0, 0], [0, 0]]);
     }
-    const createDetailBox =()=>{
-        overlayerList.forEach((ele)=>{
-            let fId = ele.id.replace('-overlay','') 
+    const createDetailBox = () => {
+        overlayerList.forEach((ele) => {
+            let fId = ele.id.replace('-overlay', '')
             let nextFeature = window.mapCon.getFeatureById(fId)
             let element = document.getElementById(ele.id)
-            let _overlay = window.mapCon.createOverlay(element,[0,0],ele.id)
+            let _overlay = window.mapCon.createOverlay(element, [0, 0], ele.id)
             // 连接线
-            let Pos = [[0,0],[0,0]];
+            let Pos = [[0, 0], [0, 0]];
             let lineFeatrue = new LineFeature({
-                id:`${ele.id}-line`,
-                points:Pos,
-                color:'#000000'
-                
+                id: `${ele.id}-line`,
+                points: Pos,
+                color: '#000000'
+
             })
             window.layer.addFeature(lineFeatrue);
             var dragPan;
@@ -84,7 +98,7 @@ const MapOl = () => {
                     dragPan = interaction;
                 }
             });
-    
+
             element.addEventListener('mousedown', function (evt) {
                 dragPan.setActive(false);
                 _overlay.set('dragging', true);
@@ -92,7 +106,7 @@ const MapOl = () => {
                     var startPoint = nextFeature.getGeometry().getCoordinates();
                     if (_overlay.get('dragging')) {
                         var dd2 = window.mapCon.getPixelFromCoordinate(evt.coordinate);
-                        var newX = dd2[0] ;
+                        var newX = dd2[0];
                         var newY = dd2[1];
                         var newPoint = window.mapCon.getCoordinateFromPixel([newX, newY]);
                         _overlay.setPosition(newPoint);
@@ -106,25 +120,25 @@ const MapOl = () => {
                     }
                 });
             });
-    
-           
+
+
 
         })
 
     }
-  
+
 
     var localStation = overlayerList.map((item, index) => {
         return (<div className='tip-overlay' key={index} id={item.id}>
             <div className='tip-detail'>
                 <span onClick={() => closeOverlay(item)} className="close-right">
-                <CloseOutlined  />
+                    <CloseOutlined />
 
                 </span>
-                <div style={{height:'10px'}}>
+                <div style={{ height: '10px' }}>
 
                 </div>
-                {item.data.map((ele,idx) => {
+                {item.data.map((ele, idx) => {
                     return (
                         <div className='tip-row' key={idx}>
                             <div className='label-tip'>
@@ -178,15 +192,96 @@ const MapOl = () => {
 
         })
         setoverlayerList(resultArry)
-       
+
+
+    }
+    const localMap =(val)=>{
+        console.log(val)
+        setIsModalOpen(false)
+        setPosArry([]);
+        if(val.type == 'point'){
+            tsqd().then((val) => {
+                let obj = {
+                    lat:val[1],
+                    lon:val[0],
+                    key: val[0]
+
+                }
+                setPosArry(current => [...current, obj]);
+                setIsModalOpen(true)
+            })
+
+        }else if(val.type == 'line'){
+            //二维数组
+            drawLine().then((val) => {
+              console.log(val)
+              if(val.length){
+                val.forEach(ele =>{
+                    let obj = {
+                        lat:ele[1],
+                        lon:ele[0],
+                        key: ele[0]
+                    }
+                    setPosArry(current => [...current, obj]);
+                })
+              }
+              setIsModalOpen(true)
+            })
+
+        }else if(val.type == 'box'){
+            drawPolygon().then((val) => {
+                console.log(val)
+              if(val.length){
+                val.forEach((ele,index) =>{
+                    let obj = {
+                        lat:ele[1],
+                        lon:ele[0],
+                        key: ele[0]*1000000+index
+                    }
+                    setPosArry(current => [...current, obj]);
+                })
+              }
+              setIsModalOpen(true)
+              
+            })
+
+        }else if(val.type == 'circle'){
+            drawCircle().then((val) => {
+                console.log(val.center)
+                let obj = {
+                    lat:val.center[1],
+                    lon:val.center[0],
+                    key: val.center[0]
+                }
+                setPosArry(current => [...current, obj]);
+                setIsModalOpen(true)
+            })
+        }
+
+    }
+    const clearMap =()=>{
+        clearDrawCache()
 
     }
     return (
         <div className="container" style={{ height: '100%' }}>
             <div ref={mapRef} id="map" style={{ height: '100%', zIndex: 10 }}></div>
+            <div className="func-btn">
+                <a className="btn-self" href="#" onClick={()=>clearMap('清除所有画图')}>清除所有画图</a>
+                <a className="btn-self" href="#" onClick={()=>showModal('地图取值')}>地图取值</a>
+            </div>
             <div className='tip-con'>
                 {localStation}
             </div>
+            <div className="btn-relate">
+                <Modal title={btnType} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={800}>
+                    <div className="get-val">
+                        <MapGetVal localMap={localMap} dataSource={posArray}/>
+
+                    </div>
+                </Modal>
+            </div>
+
         </div>
     )
 

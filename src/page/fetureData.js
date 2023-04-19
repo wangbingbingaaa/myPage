@@ -6,7 +6,7 @@ export const featureData = [{
     des: '我是个商店',
     batch: '1',
     icon: '商店',
-    scale: 0.2
+    scale: 0.15
 }, {
     color: 'red',
     name: '小润发商店',
@@ -18,21 +18,21 @@ export const featureData = [{
     scale: 0.1
 }, {
     color: 'red',
-    name: '女孩',
+    name: '松树',
     lon: '116.086512',
     lat: '26.897653',
-    des: '我是个女孩',
+    des: '我是个松树',
     batch: '3',
-    icon: 'girl-3',
+    icon: '松树',
     scale: 0.05
 }, {
     color: 'red',
-    name: '厨师',
+    name: '松树',
     lon: '109.086512',
     lat: '27.897653',
-    des: '我是厨师',
+    des: '我是松树',
     batch: '4',
-    icon: 'boy-8',
+    icon: '松树',
     scale: 0.05
 }, {
     color: 'blue',
@@ -42,7 +42,7 @@ export const featureData = [{
     des: '我是写字楼',
     batch: '5',
     icon: '公司',
-    scale: 0.5
+    scale: 0.3
 }, {
     color: 'black',
     name: '帆船',
