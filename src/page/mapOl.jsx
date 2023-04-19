@@ -23,15 +23,18 @@ import { Points } from '../util/three/three.module';
 import { featureData, labelToValue } from './fetureData'
 import { tsqd, drawPolygon, drawRect, drawCircle, drawLine, clearDrawCache } from '../util/map-op';
 import {
-    CloseOutlined,
+    CloseOutlined,DownOutlined
 } from '@ant-design/icons';
-import { Button, Modal,Form, Input, Radio } from 'antd';
+import { Button, Modal, Form, Input, Radio ,Tree } from 'antd';
 import MapGetVal from './mapGetVal';
 
 const MapOl = () => {
     let [btnType, setBtnType] = useState('')
     let [overlayerList, setoverlayerList] = useState([])
-    let [posArray,setPosArry] = useState([])
+    let [posArray, setPosArry] = useState([])
+    let [showTree, setShowTree] = useState(true)
+    let [treeData,setTreeData]= useState([])
+    let [defaultSelectedkeys,setdefaultSelectedkeys] = useState([''])
     const mapRef = useRef();
     let layer;
     let mapCon;
@@ -57,6 +60,7 @@ const MapOl = () => {
             setTimeout(() => {
                 createDetailBox()
             }, 1000)
+            treeInit()
         }
         mapCon.featureClick = ((e, feature) => {
             let _layer = window.mapCon.getOverlayById(`${feature.values_.batch}-overlay`);
@@ -70,6 +74,21 @@ const MapOl = () => {
             createDetailBox()
         }
     }, [overlayerList]);
+    const treeInit =()=>{
+        let result =[]
+        featureData.forEach((ele,index)=>{
+            let obj ={
+                title:ele.name,
+                key:`${ele.name}-${index}`,
+                children:[],
+                id: ele.batch,
+            }
+            result.push(obj)
+            setdefaultSelectedkeys(current=>[...current, obj.key])
+        })
+        setTreeData(result)
+
+    }
 
     const closeOverlay = (cur) => {
         let _layer = window.mapCon.getOverlayById(cur.id);
@@ -195,15 +214,14 @@ const MapOl = () => {
 
 
     }
-    const localMap =(val)=>{
-        console.log(val)
+    const localMap = (val) => {
         setIsModalOpen(false)
         setPosArry([]);
-        if(val.type == 'point'){
+        if (val.type == 'point') {
             tsqd().then((val) => {
                 let obj = {
-                    lat:val[1],
-                    lon:val[0],
+                    lat: val[1],
+                    lon: val[0],
                     key: val[0]
 
                 }
@@ -211,46 +229,43 @@ const MapOl = () => {
                 setIsModalOpen(true)
             })
 
-        }else if(val.type == 'line'){
+        } else if (val.type == 'line') {
             //二维数组
             drawLine().then((val) => {
-              console.log(val)
-              if(val.length){
-                val.forEach(ele =>{
-                    let obj = {
-                        lat:ele[1],
-                        lon:ele[0],
-                        key: ele[0]
-                    }
-                    setPosArry(current => [...current, obj]);
-                })
-              }
-              setIsModalOpen(true)
+                if (val.length) {
+                    val.forEach(ele => {
+                        let obj = {
+                            lat: ele[1],
+                            lon: ele[0],
+                            key: ele[0]
+                        }
+                        setPosArry(current => [...current, obj]);
+                    })
+                }
+                setIsModalOpen(true)
             })
 
-        }else if(val.type == 'box'){
+        } else if (val.type == 'box') {
             drawPolygon().then((val) => {
-                console.log(val)
-              if(val.length){
-                val.forEach((ele,index) =>{
-                    let obj = {
-                        lat:ele[1],
-                        lon:ele[0],
-                        key: ele[0]*1000000+index
-                    }
-                    setPosArry(current => [...current, obj]);
-                })
-              }
-              setIsModalOpen(true)
-              
+                if (val.length) {
+                    val.forEach((ele, index) => {
+                        let obj = {
+                            lat: ele[1],
+                            lon: ele[0],
+                            key: ele[0] * 1000000 + index
+                        }
+                        setPosArry(current => [...current, obj]);
+                    })
+                }
+                setIsModalOpen(true)
+
             })
 
-        }else if(val.type == 'circle'){
+        } else if (val.type == 'circle') {
             drawCircle().then((val) => {
-                console.log(val.center)
                 let obj = {
-                    lat:val.center[1],
-                    lon:val.center[0],
+                    lat: val.center[1],
+                    lon: val.center[0],
                     key: val.center[0]
                 }
                 setPosArry(current => [...current, obj]);
@@ -259,24 +274,65 @@ const MapOl = () => {
         }
 
     }
-    const clearMap =()=>{
+    const clearMap = () => {
         clearDrawCache()
 
     }
+  
+      const onCheck = (checkedKeys, info) => {
+        setdefaultSelectedkeys(checkedKeys)
+        if(!info.node.checked){
+            let feature = window.layer.getFeatureById(info.node.id);
+            feature.setAllLayerVisible(true)
+
+        }else {
+            let feature = window.layer.getFeatureById(info.node.id);
+            feature.setAllLayerVisible(false)
+
+        }
+      };
     return (
         <div className="container" style={{ height: '100%' }}>
             <div ref={mapRef} id="map" style={{ height: '100%', zIndex: 10 }}></div>
             <div className="func-btn">
-                <a className="btn-self" href="#" onClick={()=>clearMap('清除所有画图')}>清除所有画图</a>
-                <a className="btn-self" href="#" onClick={()=>showModal('地图取值')}>地图取值</a>
+                <a className="btn-self" href="#" onClick={() => clearMap('清除所有画图')}>清除所有画图</a>
+                <a className="btn-self" href="#" onClick={() => showModal('地图取值')}>地图取值</a>
             </div>
             <div className='tip-con'>
                 {localStation}
             </div>
+            {
+                showTree ?
+                    <div className="leftTree">
+                        <span className='tree-closer'> </span>
+                        <div className='tree-title'>
+
+                        </div>
+                        <div className="tree-con">
+                            <Tree
+                                showLine
+                                checkable
+                                switcherIcon={<DownOutlined />}
+                                defaultExpandAll
+                                onCheck={onCheck}
+                                treeData={treeData}
+                                checkedKeys	={defaultSelectedkeys}
+                            />
+                        </div>
+
+                    </div>
+                    :
+                    <div className="leftTree-small">
+                        图层
+                    </div>
+
+            }
+
+
             <div className="btn-relate">
                 <Modal title={btnType} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={800}>
                     <div className="get-val">
-                        <MapGetVal localMap={localMap} dataSource={posArray}/>
+                        <MapGetVal localMap={localMap} dataSource={posArray} />
 
                     </div>
                 </Modal>

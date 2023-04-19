@@ -74,3 +74,18 @@
     font-size: 14px;
     cursor: pointer;
    }
+   .leftTree {
+    position: absolute;
+    top:180px;
+    left: 5px;
+    min-height: 200px;
+    max-height: 530px;
+    overflow: auto;
+    width: 220px;
+    background-color: #fff;
+    padding: 12px;
+    box-shadow: inset 0 -3px 10px rgba($color: #000000, $alpha: 0.2),
+    1px 0 2px rgba($color: #000000, $alpha: 0.2),
+    2px 2px 1px rgba($color: #000000, $alpha: 0.3);
+    border-radius: 20px;
+   }
