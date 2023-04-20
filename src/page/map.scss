@@ -7,10 +7,12 @@
     padding: 18px;
     border-radius: 16px;
     position: relative;
+    cursor: move;
     .close-right {
         position:absolute;
         right: 12px;
         top: 8px;
+        cursor: pointer;
     }
 }
 .tip-row {
