@@ -17,6 +17,7 @@ import {
     EllipseFeature,
 
 } from '../util/olMap'
+import * as echarts from 'echarts';
 import { DragPan } from "ol/interaction";
 import { Points } from '../util/three/three.module';
 
@@ -57,10 +58,8 @@ const MapOl = () => {
             layer = new GisLayer(mapCon);
             window.layer = layer
             featureInit()
-            setTimeout(() => {
-                createDetailBox()
-            }, 1000)
             treeInit()
+            initChart()
         }
         mapCon.featureClick = ((e, feature) => {
             let _layer = window.mapCon.getOverlayById(`${feature.values_.batch}-overlay`);
@@ -72,8 +71,53 @@ const MapOl = () => {
     useEffect(() => {
         if (overlayerList.length) {
             createDetailBox()
+            createAnimationPoint()
         }
     }, [overlayerList]);
+    const initChart =()=>{
+        let element = document.getElementById('echart-pie')
+        let _overlay = window.mapCon.createOverlay(element, [11485932.306003379, 4208434.603482161], 'echart-pie')
+
+        
+        let option = {
+          
+            tooltip: {
+              trigger: 'item'
+            },
+          
+            series: [
+              {
+                name: 'Access From',
+                type: 'pie',
+                radius: '50%',
+                data: [
+                  { value: 1048, name: 'Search Engine' },
+                  { value: 735, name: 'Direct' },
+                  { value: 580, name: 'Email' },
+                  { value: 484, name: 'Union Ads' },
+                  { value: 300, name: 'Video Ads' }
+                ],
+                emphasis: {
+                  itemStyle: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                  }
+                }
+              }
+            ]
+          };
+          setTimeout(()=>{
+            var chartDom = document.getElementById('echart-pie-child');
+            console.log(chartDom)
+            var myChart = echarts.init(chartDom);
+            option && myChart.setOption(option);
+
+        },1000)
+
+       
+
+    }
     const treeInit =()=>{
         let result =[]
         featureData.forEach((ele,index)=>{
@@ -96,12 +140,27 @@ const MapOl = () => {
         let line = window.mapCon.getFeatureById(`${cur.id}-line`)
         line.getGeometry().setCoordinates([[0, 0], [0, 0]]);
     }
-    const createDetailBox = () => {
+    const createAnimationPoint  =()=>{
         overlayerList.forEach((ele) => {
+            let fId = ele.id.replace('-overlay', '')
+            let nextFeature = window.mapCon.getFeatureById(fId)
+            var startPoint = nextFeature.getGeometry().getCoordinates();
+            let element = document.getElementById(`${ele.id}-point`)
+            let _overlay = window.mapCon.createOverlay(element, [0, 0], `${ele.id}-point`)
+            _overlay.setPosition(startPoint);
+        })
+
+    }
+    const createDetailBox = () => {
+        overlayerList.forEach((ele,indexx) => {
             let fId = ele.id.replace('-overlay', '')
             let nextFeature = window.mapCon.getFeatureById(fId)
             let element = document.getElementById(ele.id)
             let _overlay = window.mapCon.createOverlay(element, [0, 0], ele.id)
+            if (indexx ==1){
+                var spp= nextFeature.getGeometry().getCoordinates();
+                _overlay.setPosition(spp)
+            }
             // 连接线
             let Pos = [[0, 0], [0, 0]];
             let lineFeatrue = new LineFeature({
@@ -128,6 +187,7 @@ const MapOl = () => {
                         var newX = dd2[0];
                         var newY = dd2[1];
                         var newPoint = window.mapCon.getCoordinateFromPixel([newX, newY]);
+                        console.log(newPoint)
                         _overlay.setPosition(newPoint);
                         lineFeatrue.getGeometry().setCoordinates([startPoint, evt.coordinate]);
                     }
@@ -145,6 +205,12 @@ const MapOl = () => {
         })
 
     }
+    var animationPoint = overlayerList.map((item, index) => {
+        return (<div className='css_animation1' key={index} id={`${item.id}-point`}>
+            <div className='css_animation'>
+            </div>
+        </div>)
+    })
 
 
     var localStation = overlayerList.map((item, index) => {
@@ -301,6 +367,13 @@ const MapOl = () => {
             <div className='tip-con'>
                 {localStation}
             </div>
+            <div>
+                {animationPoint}
+            </div>
+            <div className='echart-pie' id='echart-pie'>
+                <div id='echart-pie-child' className='echart-pie-child'></div>
+
+            </div>
             {
                 showTree ?
                     <div className="leftTree">
@@ -325,15 +398,11 @@ const MapOl = () => {
                     <div className="leftTree-small">
                         图层
                     </div>
-
             }
-
-
             <div className="btn-relate">
                 <Modal title={btnType} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} width={800}>
                     <div className="get-val">
                         <MapGetVal localMap={localMap} dataSource={posArray} />
-
                     </div>
                 </Modal>
             </div>

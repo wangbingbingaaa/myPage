@@ -22,42 +22,42 @@ const NumShow = (props) => {
     const initChart1 = () => {
         var chartDom = document.getElementById('onechart');
         var myChart = echarts.init(chartDom);
-var option;
-const colors = ['#EABF40', '#1795AD', '#F23917','#74A0E5'];
-option = {
-    color: colors,
-  legend: {
-    top: 'bottom',
-    textStyle:{
-        color: '#cccccc'
-    }
-  },
- 
-  series: [
-    {
-      name: 'Nightingale Chart',
-      type: 'pie',
-      radius: [40, 130],
-      center: ['50%', '50%'],
-      roseType: 'area',
-      itemStyle: {
-        borderRadius: 8
-      },
-      data: [
-        { value: 40, name: 'rose 1' },
-        { value: 38, name: 'rose 2' },
-        { value: 32, name: 'rose 3' },
-        { value: 30, name: 'rose 4' },
-        { value: 28, name: 'rose 5' },
-        { value: 26, name: 'rose 6' },
-        { value: 22, name: 'rose 7' },
-        { value: 18, name: 'rose 8' }
-      ]
-    }
-  ]
-};
+        var option;
+        const colors = ['#EABF40', '#1795AD', '#F23917', '#74A0E5'];
+        option = {
+            color: colors,
+            legend: {
+                top: 'bottom',
+                textStyle: {
+                    color: '#cccccc'
+                }
+            },
 
-option && myChart.setOption(option);
+            series: [
+                {
+                    name: 'Nightingale Chart',
+                    type: 'pie',
+                    radius: [40, 130],
+                    center: ['50%', '50%'],
+                    roseType: 'area',
+                    itemStyle: {
+                        borderRadius: 8
+                    },
+                    data: [
+                        { value: 40, name: 'rose 1' },
+                        { value: 38, name: 'rose 2' },
+                        { value: 32, name: 'rose 3' },
+                        { value: 30, name: 'rose 4' },
+                        { value: 28, name: 'rose 5' },
+                        { value: 26, name: 'rose 6' },
+                        { value: 22, name: 'rose 7' },
+                        { value: 18, name: 'rose 8' }
+                    ]
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
 
     }
     const initChart2 = () => {
@@ -77,10 +77,10 @@ option && myChart.setOption(option);
             grid: {
                 right: '20%'
             },
-            
+
             legend: {
                 data: ['Evaporation', 'Precipitation', 'Temperature'],
-                textStyle:{
+                textStyle: {
                     color: '#cccccc'
                 }
             },
@@ -193,13 +193,13 @@ option && myChart.setOption(option);
             </div>
 
             <div className='num_r_con'>
-                <Rbox12 style={{ height: '50%' }} color={['#1A9BB4','#1A9BB4']}>
+                <Rbox12 style={{ height: '50%' }} color={['#1A9BB4', '#1A9BB4']}>
                     <div className="chart-top" id='onechart'>
                     </div>
                 </Rbox12>
-                <div style={{height:'16px'}}></div>
+                <div style={{ height: '16px' }}></div>
 
-                <Rbox12 style={{ height: '50%' }} color={['#1A9BB4','#1A9BB4']}>
+                <Rbox12 style={{ height: '50%' }} color={['#1A9BB4', '#1A9BB4']}>
                     <div className="chart-down" id='twochart'>
 
                     </div>
