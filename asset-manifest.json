@@ -1,18 +1,33 @@
 {
   "files": {
-    "main.css": "/myPage/static/css/main.c2b4289a.css",
-    "main.js": "/myPage/static/js/main.a3b1de36.js",
+    "main.css": "/myPage/static/css/main.97d011ca.css",
+    "main.js": "/myPage/static/js/main.db529199.js",
     "static/js/787.d3428903.chunk.js": "/myPage/static/js/787.d3428903.chunk.js",
+    "static/media/robot.png": "/myPage/static/media/robot.e69605df3f0b1695fa50.png",
+    "static/media/boy-4.png": "/myPage/static/media/boy-4.8fa04ecf5a6459c69bdb.png",
+    "static/media/girl-5.png": "/myPage/static/media/girl-5.2e97348a446e5cdd20c8.png",
     "static/media/header1.png": "/myPage/static/media/header1.fe17b3f5b62cf69b6f45.png",
+    "static/media/girl-3.png": "/myPage/static/media/girl-3.91b6c896c121c08db0d0.png",
+    "static/media/首页_画板 1.png": "/myPage/static/media/首页_画板 1.305408008ca0a10ee810.png",
+    "static/media/boy-8.png": "/myPage/static/media/boy-8.c77f7d2f69bcf8c31b5d.png",
+    "static/media/导航_画板 1.png": "/myPage/static/media/导航_画板 1.1c974b0674f3bae78006.png",
     "static/media/header2.png": "/myPage/static/media/header2.cd5a649f43bdc2360bc0.png",
+    "static/media/山水.png": "/myPage/static/media/山水.0b9789fba0f28092f304.png",
+    "static/media/海上.png": "/myPage/static/media/海上.739591e809d9e6026d02.png",
+    "static/media/松树.png": "/myPage/static/media/松树.af8fd6bf95839a3baf61.png",
+    "static/media/公寓.png": "/myPage/static/media/公寓.f255aabe92cf5d0b8663.png",
+    "static/media/资源池.png": "/myPage/static/media/资源池.028e42b66b479dfa8d62.png",
+    "static/media/公司.png": "/myPage/static/media/公司.f5b1400d59b760e9d6a6.png",
+    "static/media/应用系统.png": "/myPage/static/media/应用系统.f74c613aafc4645ecae3.png",
+    "static/media/手机端.png": "/myPage/static/media/手机端.5adc5ce03196414ef794.png",
     "static/media/logo.svg": "/myPage/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/myPage/index.html",
-    "main.c2b4289a.css.map": "/myPage/static/css/main.c2b4289a.css.map",
-    "main.a3b1de36.js.map": "/myPage/static/js/main.a3b1de36.js.map",
+    "main.97d011ca.css.map": "/myPage/static/css/main.97d011ca.css.map",
+    "main.db529199.js.map": "/myPage/static/js/main.db529199.js.map",
     "787.d3428903.chunk.js.map": "/myPage/static/js/787.d3428903.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c2b4289a.css",
-    "static/js/main.a3b1de36.js"
+    "static/css/main.97d011ca.css",
+    "static/js/main.db529199.js"
   ]
 }
