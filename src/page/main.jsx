@@ -10,7 +10,7 @@ import FlyLineTree from './flyLineTree'
 
 import './main.scss'
 const MainPage = () => {
-    let [mapVal, setMapVal] = useState(false)
+    let [mapVal, setMapVal] = useState(true)
     let [threeType, setThreeType] = useState(true)
 
     const btnOper = () => {

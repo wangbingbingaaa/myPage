@@ -1,0 +1,144 @@
+.sysThreeCon{
+    height: calc(100% );
+    width: 80vw;
+    overflow-y: auto;
+    position: relative;
+}
+
+.containerX {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 100vh;
+}
+
+/* transform: translate(695px, 575px) scale(2.5, 2.5); */
+/* 层级3： 图片 */
+.umx-img {
+    margin: 0;
+    /* 去除默认 margin */
+    background-size: 461px 605px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 461px;
+    height: 605px;
+}
+
+/* 层级2：包裹高度 100vh */
+.f-box {
+    position: absolute;
+    bottom: 0;
+    height: 100vh;
+    min-height: 750px;
+    display: flex;
+    align-items: center;
+}
+
+/* 层级1：滚动时，改变高度百分比实现颜色切换 */
+.f-mask {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    bottom: 0;
+}
+
+/* 层级0:  固定图片在中间 */
+.umx-figure {
+    width: 461px;
+    margin: 0;
+    height: 100vh;
+    min-height: 750px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 99;
+}
+
+.umx-img.umx-f1 {
+    background-image: url('../../img//phone/iqooneo7-color-img1-md.png');
+}
+
+.umx-img.umx-f2 {
+    background-image: url('../../img/phone/iqooneo7-color-img2-md.png');
+}
+
+.umx-img.umx-f3 {
+    background-image: url('../../img/phone/iqooneo7-color-img3-md.png');
+}
+
+.color-bg {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.color-bg.orange-bg {
+    background-color: #ffeee8;
+}
+
+.color-bg.blue-bg {
+    background-color: #effbfc;
+}
+
+.color-bg.black-bg {
+    background-color: #dae1e7;
+}
+
+.mask-box {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    min-height: 750px;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.color-txt {
+    width: 230px;
+    height: 100vh;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.color-txt strong {
+    font-size: 84px;
+}
+
+.color-txt p {
+    font-size: 34px;
+}
+
+.orange-bg strong {
+    color: #f6683a;
+}
+
+.orange-bg p {
+    color: #fdbfab;
+}
+
+.blue-bg strong {
+    color: #38bec1;
+}
+
+.blue-bg p {
+    color: #a5e2e4;
+}
+
+.black-bg strong {
+    color: #182130;
+}
+
+.black-bg p {
+    color: #94aab8;
+}

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import {Route,Routes,useNavigate} from 'react-router-dom'
 import './main.scss'
 import { Button, Modal } from 'antd';
 import Pagesvg from './footShow/pagesvg'
@@ -6,13 +7,16 @@ import PageCss from './footShow/pageCss'
 import Paged3 from './footShow/paged3'
 import Pagecanvas from './footShow/pagecanvas'
 import Pageechart from './footShow/paged3Bar'
-
 import BoxBtn4 from '../component/boxBtn4';
-const FootCon = () => {
+
+const FootCon = (props) => {
+    const navigate = useNavigate()
     const [btns, setBtns] = useState([{
         name: 'SVG'
     }, {
         name: 'D3'
+    }, {
+        name: 'GASP'
     }, {
         name: 'Canvas'
     }, {
@@ -21,6 +25,7 @@ const FootCon = () => {
         name: 'UI'
     }, {
         name: '3D'
+   
     }])
     const [activeNav, setActiveNav] = useState('')
     const [visibleNavDetail, setVisibleNavDetail] = useState(false)
@@ -38,6 +43,9 @@ const FootCon = () => {
             window.open("https://wangbingbingaaa.github.io/vue3_myPage/#/3d");
         }else if (e === 'UI'){
             window.open("https://wangbingbingaaa.github.io/vue3_myPage/#/ui");
+        }else if (e === 'GASP'){
+            //路由跳转
+            navigate('/GASP')
         }else {
             setActiveNav(e)
             setIsModalOpen(true);
