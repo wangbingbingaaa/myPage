@@ -2,7 +2,7 @@ $sysColorB: rgb(19, 1, 1);
 
 ::-webkit-scrollbar {
 
-    display: none;
+    // display: none;
     /* Chrome Safari */
 
 }
@@ -208,13 +208,14 @@ $sysColorB: rgb(19, 1, 1);
             height: 700px;
         }
 
-        .center {
+        .center_con {
             background-image: url('../../img/fengjing/fj2.png');
             background-repeat: no-repeat;
             background-size: cover;
             width: 100%;
             height: 700px;
             position: relative;
+            overflow: hidden;
         }
 
         .downCenter {

@@ -39,7 +39,7 @@ const SysPageTwo = () => {
                 trigger: ".top",
                 scroller: '.contentTwo',
                 start: "top top",
-                endTrigger: ".center",
+                endTrigger: ".center_con",
                 end: "bottom top",
                 scrub: true,
                 pin: true,
@@ -52,16 +52,17 @@ const SysPageTwo = () => {
         }
         );
 
-        gsap.fromTo('.center', {
+        gsap.fromTo('.center_con', {
             backgroundPosition: () => "50% 0px"
         }, {
             backgroundPosition: () => `50% -${window.innerHeight * (1 - getRatio)}px`,
             ease: "none",
+            // xPercent:'11',
             scrollTrigger: {
-                trigger: ".center",
+                trigger: ".center_con",
                 scroller: '.contentTwo',
                 start: "top top",
-                endTrigger: ".center",
+                endTrigger: ".downCenter",
                 end: "bottom top",
                 scrub: true,
                 pin: true,
@@ -170,7 +171,7 @@ const SysPageTwo = () => {
                         <div className="text">大草原</div>
 
                     </div>
-                    <div className="center">
+                    <div className="center_con">
                         <div className="text">蓝蓝的天</div>
                     </div>
                     <div className="downCenter">
