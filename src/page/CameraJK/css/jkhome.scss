@@ -1,0 +1,118 @@
+.jk {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(250, 250, 250);
+    position: relative;
+    .topMenu {
+        position: relative;
+        height: 60px;
+        line-height: 60px;
+        width: 100%;
+        background-color: #001529;
+        display: flex;
+        flex-direction: row;
+        .leftLogoName {
+            width: 240px;
+            height: 140px;
+            color: #ddd;
+            font-size: 24px;
+            line-height: 50px;
+            text-align: center;
+            
+        }
+        .menuRight {
+            width: calc(100% - 240px);
+            
+            text-align: right;
+            height: 100%;
+            color: #ddd;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin: 0 16px;
+            .time {
+                width: 230px;
+            }
+
+            .exit {
+                margin: 0 12px;
+            }
+            .ring {
+                margin: auto 20px;
+                color: red;
+                position: relative;
+                .ringIcon {
+
+                    width: 30px;
+                    height: 30px;
+                   cursor: pointer;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    background-image: url(../../../img/jk/ring.png);
+                }
+                .badge {
+                    // width: 36px;
+                    // height: 22px;
+                    // background-color: red;
+                    // color: #fff;
+                    // border-radius: 10px;
+                    position: absolute;
+                    top: -30px;
+                    right: -20px;
+                }
+                
+
+            }
+            .exit {
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+    }
+  
+    .mainCon {
+        height: calc(100% - 60px);
+        width: 100vw;
+        background-color: rgb(250, 250, 250);
+        display: flex;
+        flex-direction: row;
+    }
+    .leftMenu {
+        height: 100%;
+        width: 260px;
+        background-color: #001529;
+        .userTop {
+            height: 150px;
+            width: 100%;
+            padding: 20px 0;
+            border-bottom: 1px solid #262598;
+            .headerPng {
+                height: 110px;
+                width: 110px;
+                border: 1px solid #ddd;
+                border-radius: 50%;
+                margin: 0px auto;
+                background-image: url(../../../img//jk/boy-3.png);
+                background-size: cover;
+                background-repeat: no-repeat;
+
+
+            }
+            .ueserName {
+                height: 40px;
+                margin: 0 auto;
+                color: #ddd;
+                text-align: center;
+                margin-top: 14px;
+
+            }
+        }
+    }
+    .rightContent {
+        width: calc(100% - 260px);
+        height: calc(100% );
+        // padding: 0 10px;
+        background: #fff;
+    }
+}

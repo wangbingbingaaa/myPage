@@ -83,7 +83,7 @@ const SystemHome = () => {
                             <div id="menu1" className="menuElement" onClick={()=>move('1', '50px', '#ffcc80')}><HomeOutlined /></div>
                             <div id="menu2" className="menuElement" onClick={()=>move('2', '150px', '#81d4fa')}><CarOutlined /></div>
                             <div id="menu3" className="menuElement" onClick={()=>move('3', '250px', '#c5e1a5')}><DesktopOutlined /></div>
-                            <div id="menu4" className="menuElement" onClick={()=>move('4', '350px', '#ce93d8')}><CoffeeOutlined /></div>
+                            <div id="menu4" className="menuElement" onClick={()=>move('4', '350px', 'antiquewhite')}><CoffeeOutlined /></div>
                         </div>
                     </div>
                     <div id="bgWrapper">

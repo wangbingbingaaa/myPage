@@ -35,24 +35,13 @@ const SysPageFour = () => {
                 end: () => "+=" + (panelsContainer.offsetWidth - innerWidth)
             }
         });
-        // gsap.to('.trunPage', {
-        //     scrollTrigger: {
-        //         trigger: ".trunPage",
-        //         scroller: '.trunPage',
-        //         pin: true,
-        //         start: "top top",
-        //         scrub: 1,
-        //         markers: true,
-
-        //         end: 'down top'
-        //     }
-        // });
     })
 
     return (<>
         <div className="trunPage">
             <section id="intro" className="full-screen pt-5 blue">
                 <h1>A cool title</h1>
+                <h1>第一页哦~</h1>
 
                 <div id="clouds-layer-1" className="clouds"></div>
                 <div id="clouds-layer-2" className="clouds"></div>
@@ -161,11 +150,10 @@ const SysPageFour = () => {
                     </article>
                 </div>
             </section>
-            {/* <section id="map" className="full-screen"></section> */}
-
+            <section id="map" className="full-screen">
+                最后一页~
+            </section>
         </div>
-
-
     </>)
 
 }
