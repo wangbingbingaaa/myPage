@@ -3,8 +3,8 @@ import { Input, Form, Button, Space, Table, Tag, Modal,Tree,Switch,Badge} from '
 import './css/RoleManage.scss'
 const RoleManage = () => {
     let [tableData, setTableData] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalTitle, setModalTitle] = useState('新增角色');
+    let [isModalOpen, setIsModalOpen] = useState(false);
+    let [modalTitle, setModalTitle] = useState('新增角色');
 
     const columns = [{
         title: '角色编号',

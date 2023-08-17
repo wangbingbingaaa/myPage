@@ -1,6 +1,6 @@
 .videoList {
-    height: 100%;
-    width: 100%;
+    height: calc(100% - 33px);
+    width: calc(100% - 33px);
     padding: 16px;
     .searchTopRow {
         padding: 16px;
@@ -20,6 +20,188 @@
 }
 
 .runMark {
+    width: calc(100% - 40px);
+    height:calc(100% - 40px);
+    padding: 20px;
+    overflow-y: auto;
+    .cardShow {
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+    }
+    .catchVideo {
+        overflow-x: auto;
+        width: calc(100%-20px);
+        height: 600px;
+        border-radius: 20px;
+        box-shadow:  2px 2px 20px #bebebe,
+                     -2px -2px 20px #ffffff;
+                     margin-bottom: 20px;
+    }
+    .headFlag {
+        width: 330px;
+        border-right: 1px solid #ccc;
+    }
+    .outlinePng {
+        height: 250px;
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        margin: auto;
+        // background-image: url(../../../img/jk/22.png);
+        background-size: cover;
+    }
+    .desOutline {
+    }
+    .row {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+        .left {
+            min-width: 120px;
+        }
+    }
+    .runParam {
+        width:calc(100% - 350px);
+        height: 100%;
+        overflow-y: auto;
+        .list {
+            border-bottom: 1px solid #ccc;
+            height: 320px;
+            display: flex;
+            flex-direction: row;
+            padding: 10px 20px;
+            .carmLeft {
+                width: 400px;
+                height: 300px;
+                border: 1px solid #ccc;
+                .bg {
+                    width: 400px;
+                    height: 300px;
+                    background-size: cover;
+                }
 
+            }
+            .carmRight {
+                width: 540px;
+                height: 100%;
+
+            }
+
+        }
+
+    }
+    .danger {
+        color: red;
+    }
     
+
+
+}
+.viedoLook {
+    padding: 20px;
+    height: calc(100% - 40px);
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    .cardShow {
+        box-shadow:  2px 2px 20px #bebebe,
+        -2px -2px 20px #ffffff;
+        margin-bottom: 20px;
+
+    }
+    .mianRow {
+        height: 500px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 16px;
+        .logo {
+            font-size: 18px;
+            position: absolute;
+            top: 0px;
+            left: 6px;
+        }
+        .leftVideo{
+            position: relative;
+            border-right: 1px solid #ccc;
+            width: 48%;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-image: url(../../../img/jk/shexiang4.png);
+          
+        }
+        .rightVideo {
+            position: relative;
+            flex: 1;
+            height: 100%;
+            background-position: center;
+            background-size: cover;
+            background-image: url(../../../img/jk/大门.png);
+        }
+        .operBtn {
+            height: 40px;
+            width: 100%;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            z-index: 11;
+            background-color: rgba($color: #fff, $alpha: 0.8);
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            
+            .text{
+                text-align: center;
+                padding:  0 20px;
+                font-size: 18px;
+                background-color: #1677FF;
+                border-radius: 16px;
+                margin: 8px;
+                color: #fff;
+                min-width: 80px;
+                cursor: pointer;
+
+            }
+        }
+    }
+    
+    .fzrow {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        overflow: auto;
+        padding: 16px;
+        .item {
+            width: 600px;
+            border: 1px solid #ccc;
+        }
+        .inner1 {
+            background: url(../../../img/jk/gongchang.png);
+            background-position: center;
+            background-size: cover;
+        }
+        .inner2 {
+            background: url(../../../img/jk/gongchang3.png);
+            background-position: center;
+            background-size: cover;
+        }
+        .inner3 {
+            background: url(../../../img/jk/gongchang2.png);
+            background-position: center;
+            background-size: cover;
+        }
+    }
+    .tupian{
+        background: url(../../../img/jk/22.png);
+        background-position: center;
+        background-size: cover;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+    }
+
 }

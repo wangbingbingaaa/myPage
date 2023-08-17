@@ -12,11 +12,15 @@ import ReceiveWarn from '../page/CameraJK/ReceiveWarn';
 import RunMarker from '../page/CameraJK/RunMarker';
 import AssistVideo  from '../page/CameraJK/AssistVideo';
 import VideoManage from '../page/CameraJK/VideoManage'
+import CameraJkLogin  from '../page/CameraJK/CameraJkLogin'
 import React from 'react';
 function RouterEle(){
     const element = useRoutes([
         {
             path:'GASP',element:<SystemHome/>
+        },
+        {
+            path:'CameraJkLogin',element:<CameraJkLogin/>
         },
         {
             path:'CameraJk',element:<CameraJkHome/>,

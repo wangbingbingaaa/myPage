@@ -68,13 +68,20 @@ const CameraJkHome = () => {
         navigate(e.key)
 
     }
+    const login =()=>{
+        navigate('./CameraJkLogin')
+
+    }
 
     return (
         <>
             <div className="jk">
                 <div className="topMenu">
+                    <div className="logo">
+                        
+                    </div>
                     <div className="leftLogoName">
-                        海汇智能监控系统
+                    海汇智能监视系统
 
                     </div>
                     <div className="menuRight">
@@ -89,13 +96,10 @@ const CameraJkHome = () => {
                                     <Badge count={5}>
                                     </Badge>
                                 </Space>
-
                             </div>
-
-
                         </div>
                         <div className="exit">
-                            退出
+                           <NavLink to="/CameraJkLogin">退出</NavLink>
                         </div>
 
                     </div>

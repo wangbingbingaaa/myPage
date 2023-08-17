@@ -356,7 +356,7 @@ const VideoSaveList = () => {
                             <Descriptions.Item label="遮挡">无遮挡</Descriptions.Item>
                             <Descriptions.Item label="执勤人">王国庆</Descriptions.Item>
                             <Descriptions.Item label="创建时间">2023-03-23 11:02:11</Descriptions.Item>
-                            <Descriptions.Item label="平均步速">1.51ms</Descriptions.Item>
+                            <Descriptions.Item label="平均步速">1.51 m/s</Descriptions.Item>
                             <Descriptions.Item label="全遮挡轮廓持续时间">0s</Descriptions.Item>
                             <Descriptions.Item label="行走通道剩余数量">3</Descriptions.Item>
                             <Descriptions.Item label="是否危险">无</Descriptions.Item>
