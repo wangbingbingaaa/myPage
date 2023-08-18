@@ -129,8 +129,6 @@
         background: #fff;
     }
 }
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i|Monoton');
-@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .login {
     height: 100vh;
     width: 100vw;
@@ -249,41 +247,75 @@ position: relative;
         .item {
             margin-right: 10px;
         }
-        .toprow {
-            padding: 10px;
-            color: #fff;
-            font-size: 18px;
-        }
-        .desrow {
-            margin: 10px;
-            height: 40px;
-            width: calc(100% - 20px);
-            background-image: linear-gradient(#03295e,#1253ad,);
-
-        }
+        
+       
+    }
+    .toprow {
+        padding: 10px;
+        color: #ccc;
+        font-size: 16px;
     }
     .showReal {
         flex: 1;
         position: relative;
+        display: flex;
+        flex-direction: row;
         .textTitle {
             position: absolute;
             top: 10px;
             left: 20px;
-            font-size: 24px;
-            color: #fff;
+            font-size: 20px;
+            color: #ccc;
             z-index: 12;
 
         }
        
         .center {
-            width: 100%;
+            width: 65%;
             height: 100%;
-              background-image: url(../../../img/jk/0849.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+            background-image: url(../../../img/jk/3150.png);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 84%;
+        }
+        .pngRight {
+            width: 440px;
+            height: 100%;
+            position: absolute;
+            right: 26px;
+            top: 20px;
         }
        
+    }
+    .onechart {
+        width: 100%;
+        height: 280px;
+    }
+    #chart2Con {
+        width: 100%;
+        height: 170px;
+    }
+    .shebei {
+        width: 100%;
+        height: 200px;
+        display: flex;
+        flex-direction: row;
+        .item {
+            margin: 18px 0 0 8px;
+            width: 25%;
+            height: 100%;
+            color: #1677FF;
+            text-align: center;
+        }
+        .piece {
+            height: 80px;
+            width: 100%;
+            margin-top: 20px;
+            color: #2986C4;
+            font-size: 30px;
+            text-align: center;
+            line-height: 80px;
+        }
     }
 
   }
