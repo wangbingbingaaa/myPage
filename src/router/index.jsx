@@ -13,6 +13,7 @@ import RunMarker from '../page/CameraJK/RunMarker';
 import AssistVideo  from '../page/CameraJK/AssistVideo';
 import VideoManage from '../page/CameraJK/VideoManage'
 import CameraJkLogin  from '../page/CameraJK/CameraJkLogin'
+import AutoSendWarn from '../page/CameraJK/AutoSendWarn'
 import React from 'react';
 function RouterEle(){
     const element = useRoutes([
@@ -46,6 +47,9 @@ function RouterEle(){
                 },{
                     path:"sendWarn",
                     element:<SendWarn />
+                },{
+                    path:"autoSendWarn",
+                    element:<AutoSendWarn />
                 },{
                     path:"roleManage",
                     element:<RoleManage />

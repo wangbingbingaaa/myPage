@@ -43,38 +43,38 @@ const RoleManage = () => {
     }]
     useEffect(() => {
         setTableData([{
+            key:'1',
             roleIndex: '001',
             roleName: '超级管理员',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-11 10:09:01',
             boss: '--',
-            key:'1',
 
         }, {
+            key:'2',
             roleIndex: '002',
             roleName: '管理员',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-13 12:00:11',
             boss: '贺磊',
-            key:'2',
         }, {
+            key:'3',
             roleIndex: '003',
             roleName: '警员',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-16 09:12:23',
             boss: '贺磊',
-            key:'3',
         }, {
+            key:'4',
             roleIndex: '004',
             roleName: '普通员工',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-23 11:02:13',
             boss: '孙铭武',
-            key:'4',
 
         }
 
@@ -105,6 +105,10 @@ const RoleManage = () => {
             {
                 title: '告警发送',
                 key: '5-2',
+            },
+            {
+                title: '告警设置',
+                key: '5-3',
             },
           ],
         },{

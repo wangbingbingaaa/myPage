@@ -77,6 +77,7 @@ const UserManage = () => {
     }]
     useEffect(() => {
         setTableData([{
+            key:'1',
             roleIndex: '001',
             role: '超级管理员',
             name: '贺磊',
@@ -84,11 +85,11 @@ const UserManage = () => {
             createName: '--',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-11 08:02:14',
             boss: '--',
             status:'在线'
-
         }, {
+            key:'2',
             roleIndex: '002',
             role: '超级管理员',
             name: '孙铭武',
@@ -96,11 +97,13 @@ const UserManage = () => {
             createName: '贺磊',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-11 08:11:32',
             boss: '--',
             status:'离线'
 
         }, {
+            key:'3',
+
             roleIndex: '003',
             role: '管理员',
             name: '张庆',
@@ -108,9 +111,10 @@ const UserManage = () => {
             createName: '贺磊',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-13 12:12:32',
             status:'在线'
         }, {
+            key:'4',
             roleIndex: '004',
             role: '警员',
             name: '王国庆',
@@ -118,10 +122,11 @@ const UserManage = () => {
             createName: '孙铭武',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-16 13:43:51',
             boss: '贺磊',
             status:'在线'
         }, {
+            key:'5',
             roleIndex: '005',
             role: '普通员工',
             name: '张肖',
@@ -129,7 +134,7 @@ const UserManage = () => {
             createName: '贺磊',
             roleFlag: 'admin',
             isUse: '启用',
-            creatTime: '2023-03-23 11:02:11',
+            creatTime: '2023-03-20 09:02:11',
             status:'在线'
         }
 

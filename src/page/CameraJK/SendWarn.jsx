@@ -60,7 +60,7 @@ const SendWarn = () => {
 
                     <Space size="middle">
                         <a onClick={() => resultRow(record)}>结果</a>
-                        <text style={{color:'red'}}>删除</text>
+                        <span style={{color:'red'}}>删除</span>
                     </Space>
               )
 
@@ -72,6 +72,7 @@ const SendWarn = () => {
     }]
     useEffect(() => {
         setTableData([{
+            key:'1',
            
             index: '00003',
             type: '巡查',
@@ -79,15 +80,17 @@ const SendWarn = () => {
             trigger: '贺磊',
             opinion: '加强巡视',
             dealStatus: '完成',
-            creatTime: '2023-07-09 10:03:21'
+            creatTime: '2023-03-23 10:03:21'
         }, {
+            key:'2',
+
             index: '00005',
             type: '陌生人闯入',
             warnGrade: '高',
             trigger: '贺磊',
             opinion: '陌生人行为诡异',
             dealStatus: '待处理',
-            creatTime: '2023-07-09 12:34:32'
+            creatTime: '2023-03-23 12:34:32'
         }
 
         ])
@@ -126,25 +129,24 @@ const SendWarn = () => {
                         name="roleSearch"
                         layout='inline'
                         initialValues={{
-                            remember: true,
-                            layout: 'inline',
+                            warnType: '陌生人闯入',
+                            warnPri: '高',
                         }}
 
                         autoComplete="off"
                     >
                         <Form.Item
                             label="告警编号"
-                            name="username"
+                            name="warnIndex"
                         >
                             <Input placeholder="请输入角色名" />
                         </Form.Item>
 
                         <Form.Item
                             label="告警等级"
-                            name="username"
+                            name="warnPri"
                         >
                             <Select
-                                defaultValue="低"
                                 style={{
                                     width: 220,
                                 }}
@@ -164,13 +166,12 @@ const SendWarn = () => {
                         </Form.Item>
                         <Form.Item
                             label="告警类型"
-                            name="username"
+                            name="warnType"
                         >
                             <Select
                                 style={{
                                     width: 220,
                                 }}
-                                defaultValue="陌生人闯入"
                                 options={[
                                     {
                                         value: '陌生人闯入',

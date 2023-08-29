@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Input, Form, Button, Space, Table, Tag, Modal, Tree, Switch ,Select,Badge} from 'antd';
+import { Input, Form, Button, Space, Table, Tag, Modal, Tree, Switch, Select, Badge } from 'antd';
 import './css/RoleManage.scss'
 const VideoManage = () => {
     let [tableData, setTableData] = useState([]);
@@ -23,17 +23,17 @@ const VideoManage = () => {
         key: 'status',
         dataIndex: 'status',
         render: (_, row) => {
-            if(row.status == '离线'){
-                return(
+            if (row.status == '离线') {
+                return (
                     <Badge status="error" text="离线" />
                 )
 
-            }else {
-                return(
-                <Badge status="success" text="在线" />
+            } else {
+                return (
+                    <Badge status="success" text="在线" />
                 )
             }
-       },
+        },
     }, {
         title: '优先级',
         key: 'priority',
@@ -63,8 +63,8 @@ const VideoManage = () => {
         title: '负责人',
         key: 'createName',
         dataIndex: 'createName',
-        
-    },{
+
+    }, {
         title: '操作',
         key: 'oper',
         render: (_, record) => (
@@ -74,9 +74,10 @@ const VideoManage = () => {
             </Space>
         ),
     }
-]
+    ]
     useEffect(() => {
         setTableData([{
+            key: '1',
             index: 'e-0034',
             name: 'sy19478948',
             direction: '工厂2号-西入口',
@@ -84,8 +85,9 @@ const VideoManage = () => {
             priority: '高',
             isUse: '启用',
             creatTime: '2023-01-03 09:22:09',
-            status:'在线'
+            status: '在线'
         }, {
+            key: '2',
             index: 's-0004',
             name: 'sy135325333',
             direction: '工厂1号-南出口',
@@ -93,9 +95,10 @@ const VideoManage = () => {
             priority: '高',
             isUse: '启用',
             creatTime: '2022-08-42 09:02:53',
-            status:'在线'
+            status: '在线'
 
         }, {
+            key: '3',
             index: 'n-0011',
             name: 'sy1945311',
             direction: '工厂1号-东',
@@ -103,39 +106,39 @@ const VideoManage = () => {
             priority: '低',
             isUse: '启用',
             creatTime: '2023-01-03 09:22:09',
-            status:'在线'
+            status: '在线'
         }, {
+            key: '4',
             index: 'w-0034',
             name: 'sy19478948',
             direction: '工厂2号-北',
             createName: '李小船',
             priority: '中等',
             isUse: '启用',
-            creatTime: '2023-04-34 10:43:07',
-            status:'在线'
+            creatTime: '2022-04-34 10:43:07',
+            status: '在线'
         }, {
+            key: '5',
             index: 'e-0034',
             name: 'sy19478948',
             direction: '工厂1号-西',
             createName: '王明',
             priority: '低',
             isUse: '启用',
-            creatTime: '2023-05-29 09:22:027',
-            status:'在线'
+            creatTime: '2022-05-29 09:22:27',
+            status: '在线'
         }
 
         ])
 
     }, [])
-    
+
     const newRole = () => {
-        console.log('123');
         setIsModalOpen(true);
         setModalTitle('新增设备')
 
     }
     const delteRole = () => {
-        console.log('345')
 
     }
     const handleOk = () => {
@@ -223,8 +226,8 @@ const VideoManage = () => {
                     <Table rowSelection={{ type: 'checkbox' }} columns={columns} dataSource={tableData} />;
                 </div>
                 <div className="model">
-                    <Modal title={modalTitle} open={isModalOpen}  okText="确认"
-        cancelText="取消" onOk={handleOk} onCancel={handleCancel}>
+                    <Modal title={modalTitle} open={isModalOpen} okText="确认"
+                        cancelText="取消" onOk={handleOk} onCancel={handleCancel}>
                         <div className="madalCon">
                             <Form
                                 name="editForm"
@@ -249,9 +252,9 @@ const VideoManage = () => {
                                     name="username"
                                     rules={[
                                         {
-                                          required: true,
+                                            required: true,
                                         },
-                                      ]}
+                                    ]}
                                 >
                                     <Input placeholder="请输入设备编号" />
                                 </Form.Item>
@@ -260,9 +263,9 @@ const VideoManage = () => {
                                     name="work"
                                     rules={[
                                         {
-                                          required: true,
+                                            required: true,
                                         },
-                                      ]}
+                                    ]}
                                 >
                                     <Input placeholder="请输入设备型号" />
                                 </Form.Item>
@@ -271,9 +274,9 @@ const VideoManage = () => {
                                     name="telNum"
                                     rules={[
                                         {
-                                          required: true,
+                                            required: true,
                                         },
-                                      ]}
+                                    ]}
                                 >
                                     <Input placeholder="请输入负责人" />
                                 </Form.Item>
@@ -282,9 +285,9 @@ const VideoManage = () => {
                                     name="telNum"
                                     rules={[
                                         {
-                                          required: true,
+                                            required: true,
                                         },
-                                      ]}
+                                    ]}
                                 >
                                     <Input placeholder="请输入所处位置" />
                                 </Form.Item>
@@ -293,9 +296,9 @@ const VideoManage = () => {
                                     name="sex"
                                     rules={[
                                         {
-                                          required: true,
+                                            required: true,
                                         },
-                                      ]}
+                                    ]}
                                 >
                                     <Switch checkedChildren="在线" unCheckedChildren="离线" defaultChecked />
                                 </Form.Item>
@@ -304,9 +307,9 @@ const VideoManage = () => {
                                     name="roleSelect"
                                     rules={[
                                         {
-                                          required: true,
+                                            required: true,
                                         },
-                                      ]}
+                                    ]}
                                 >
                                     <Select
                                         defaultValue="低"
@@ -317,15 +320,15 @@ const VideoManage = () => {
                                             {
                                                 value: '高',
                                                 label: '高',
-                                            },{
+                                            }, {
                                                 value: '中等',
                                                 label: '中等',
-                                            },{
+                                            }, {
                                                 value: '低',
                                                 label: '低',
                                             }
                                         ]}
-                                        />
+                                    />
                                 </Form.Item>
                             </Form>
 

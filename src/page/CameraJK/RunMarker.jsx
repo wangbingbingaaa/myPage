@@ -6,7 +6,7 @@ import beixuan from '../../img/jk/beixuan.png'
 import beixuan22 from '../../img/jk/22.png'
 import xingzou from '../../img/jk/xingzou1.mp4'
 import {
-    Descriptions, Modal, Tree, Select,
+    Descriptions, Modal, Tree, Select
 
 } from 'antd';
 const RunMarker = () => {
@@ -15,28 +15,42 @@ const RunMarker = () => {
         value: 'e-0034'
     }]
     const desList = [{
-
+id:'1',
         lable: '轮廓编号',
         value: '20230315843'
     }, {
+id:'2',
+
         lable: '遮挡',
         value: '全遮挡'
     }, {
+id:'3',
+
         lable: '平均步速',
         value: '2.1 m/s'
     }, {
+id:'4',
+
         lable: '入口抓取日期',
-        value: '2023-05-23'
+        value: '2023-03-23'
     }, {
+id:'5',
+
         lable: '具体时间',
         value: '11:12:09'
     }, {
+id:'6',
+
         lable: '风险',
         value: '高'
     }, {
+id:'7',
+
         lable: '人脸识别结果',
         value: '查无此人'
     }, {
+id:'8',
+
         lable: '是否报警',
         value: '已报警'
 
@@ -61,7 +75,7 @@ const RunMarker = () => {
             )
         }else {
             return(
-                <text>{value}</text>
+                <span>{value}</span>
             )
         }
 
@@ -79,7 +93,7 @@ const RunMarker = () => {
                             {
                                 desList.map(ele => {
                                     return (
-                                        <div className="row">
+                                        <div className="row" key={ ele.id }>
                                             <div className="left">
                                                 {ele.lable}:
                                             </div>
@@ -106,7 +120,7 @@ const RunMarker = () => {
                                     <Descriptions.Item label="设备编号">s-0032</Descriptions.Item>
                                     <Descriptions.Item label="设备优先级"> 高 </Descriptions.Item>
                                     <Descriptions.Item label="遮挡">全遮挡</Descriptions.Item>
-                                    <Descriptions.Item label="创建时间">2023-05-23 11:32:11</Descriptions.Item>
+                                    <Descriptions.Item label="创建时间">2023-03-23 11:32:11</Descriptions.Item>
                                     <Descriptions.Item label="平均步速">1.91 m/s</Descriptions.Item>
                                     <Descriptions.Item label="全遮挡轮廓持续时间">10s</Descriptions.Item>
                                     <Descriptions.Item label="播放视频"><a onClick={showModal}> 播放</a></Descriptions.Item>
@@ -125,7 +139,7 @@ const RunMarker = () => {
                                     <Descriptions.Item label="设备编号">n-0011</Descriptions.Item>
                                     <Descriptions.Item label="设备优先级">中等 </Descriptions.Item>
                                     <Descriptions.Item label="遮挡">全遮挡</Descriptions.Item>
-                                    <Descriptions.Item label="创建时间">2023-05-23 12:02:43</Descriptions.Item>
+                                    <Descriptions.Item label="创建时间">2023-03-23 12:02:43</Descriptions.Item>
                                     <Descriptions.Item label="平均步速">2.1 m/s</Descriptions.Item>
                                     <Descriptions.Item label="全遮挡轮廓持续时间">17s</Descriptions.Item>
                                     <Descriptions.Item label="播放视频"><a>播放</a></Descriptions.Item>
@@ -148,7 +162,7 @@ const RunMarker = () => {
                             {
                                 desList.map(ele => {
                                     return (
-                                        <div className="row">
+                                        <div className="row" key={ ele.id }>
                                             <div className="left">
                                                 {ele.lable}:
                                             </div>

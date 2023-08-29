@@ -22,7 +22,12 @@ const CameraMenuHome = () => {
     })
     const initChart1 = () => {
         var chartDom = document.getElementById('onechart');
-        var myChart = echarts.init(chartDom);
+        let myChart = echarts.getInstanceByDom(chartDom);
+        if (myChart == undefined) {
+            myChart = echarts.init(chartDom);
+        }
+
+       
         var option;
         const colors = ['#EABF40', '#1795AD', '#F23917', '#74A0E5'];
         option = {
@@ -72,7 +77,10 @@ const CameraMenuHome = () => {
     }
     const initChart2 = () => {
         var chartDom = document.getElementById('chart2Con');
-        var myChart = echarts.init(chartDom);
+        let myChart = echarts.getInstanceByDom(chartDom);
+        if (myChart == undefined) {
+            myChart = echarts.init(chartDom);
+        }
         var option;
 
         option = {
@@ -189,7 +197,10 @@ const CameraMenuHome = () => {
     }
     const initChart3 = () => {
         var chartDom = document.getElementById('chart3con');
-        var myChart = echarts.init(chartDom);
+        let myChart = echarts.getInstanceByDom(chartDom);
+        if (myChart == undefined) {
+            myChart = echarts.init(chartDom);
+        }
         var option;
 
         option = {
@@ -273,7 +284,10 @@ const CameraMenuHome = () => {
     }
     const initChart4 = () => {
         var chartDom = document.getElementById('chart4con');
-        var myChart = echarts.init(chartDom);
+        let myChart = echarts.getInstanceByDom(chartDom);
+        if (myChart == undefined) {
+            myChart = echarts.init(chartDom);
+        }
         var option;
 
         option = {
@@ -391,11 +405,7 @@ const CameraMenuHome = () => {
                                 <div className="toprow">
                                     <RightOutlined style={{ paddingRight: '8px', color: '#2986C4' }} />
                                     人员流动检测
-                                    {/* 报警次数
-                                    总出入人数
-                                    陌生人数
-                                    员工人数
-                                    巡查次数 */}
+                                  
                                 </div>
                                 <div className="onechart" id='onechart'>
 
